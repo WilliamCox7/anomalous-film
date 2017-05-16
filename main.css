@@ -15,6 +15,9 @@ body {
   overflow: hidden;
   position: relative;
   border: solid 1px #444648;
+  opacity: 1.0;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,9 +30,6 @@ body {
 }
 
 .title {
-  opacity: 1.0;
-  -webkit-transition: opacity 1s ease;
-  transition: opacity 1s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,9 +52,6 @@ body {
 }
 
 .border video {
-  opacity: 1.0;
-  -webkit-transition: opacity 1s ease;
-  transition: opacity 1s ease;
   position: absolute;
   width: 100%;
   z-index: -1;
@@ -196,13 +193,13 @@ body {
   margin-bottom: 10px;
   min-height: 100%;
   width: 100%;
+  opacity: 0.0;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
 }
 
 .movies .month-section {
   padding: 10px;
-  opacity: 0.0;
-  -webkit-transition: opacity 1s ease;
-  transition: opacity 1s ease;
 }
 
 .movies .month {
@@ -268,13 +265,13 @@ body {
   min-height: 100%;
   width: 100%;
   max-width: 1300px;
+  opacity: 0.0;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
 }
 
 .jumbotron {
   width: 100%;
-  opacity: 0.0;
-  -webkit-transition: opacity 1s ease;
-  transition: opacity 1s ease;
   height: 350px;
   position: relative;
   overflow: hidden;

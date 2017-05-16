@@ -8,8 +8,7 @@ angular.module('anomalous').controller('homeCtrl', function($state) {
 
       if(delta <= 0) {
           $("#mouse").css('marginTop', "+=400");
-          $(".title").css('opacity', '0.0');
-          $(".border video").css('opacity', '0.0');
+          $(".border").css('opacity', '0.0');
           setTimeout(function(){ $state.transitionTo('movies'); }, 1000);
       }
     });
