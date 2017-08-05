@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setLen } from '../reducers/postReducer';
 import YouTube from 'react-youtube';
+import Results from './Results';
 import $ from 'jquery';
 import './Home.scss';
 
@@ -158,7 +159,9 @@ class Home extends Component {
     }
     return (
       <div className="Home">
-        {post}
+        {this.props.posts.search ? (
+          <Results />
+        ): (post)}
       </div>
     );
   }
