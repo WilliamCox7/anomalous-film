@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { home, prev, next } from '../reducers/postReducer';
 import fb from '../src/fb.svg';
 import './Nav.scss';
 
@@ -12,9 +13,23 @@ class Nav extends Component {
           <div className="action-container">
             <input type="text" placeholder="search..." />
             <div className="action-buttons">
-              <span><i className="fa fa-home" aria-hidden="true"></i></span>
-              <span><i className="fa fa-chevron-left" aria-hidden="true"></i></span>
-              <span>next post <i className="fa fa-chevron-right" aria-hidden="true"></i></span>
+              {this.props.posts.index > 1 ? (
+                <span onClick={this.props.home}>
+                  <i className="fa fa-home" aria-hidden="true"></i>
+                </span>
+              ) : null}
+              {this.props.posts.index !== 0 ? (
+                <span onClick={this.props.prev}>
+                  <i className="fa fa-chevron-left" aria-hidden="true"></i>
+                  {this.props.posts.length-1 > this.props.posts.index ? (
+                    null) : (' prev post')}
+                </span>
+              ) : null}
+              {this.props.posts.length-1 > this.props.posts.index ? (
+                <span onClick={this.props.next}>
+                  next post <i className="fa fa-chevron-right" aria-hidden="true"></i>
+                </span>
+              ) : null}
             </div>
           </div>
           <div className="login"><img src={fb} /></div>
@@ -30,4 +45,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Nav);
+const mapDispatchToProps = {
+  home: home,
+  prev: prev,
+  next: next
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

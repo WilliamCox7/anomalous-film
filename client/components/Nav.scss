@@ -12,6 +12,8 @@
   margin-bottom: 40px;
   background: white;
   border-bottom: solid 1px $border;
+  position: fixed;
+  z-index: 1;
   .nav-container {
     display: -webkit-box;
     display: -ms-flexbox;

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setLen } from '../reducers/postReducer';
 import YouTube from 'react-youtube';
 import $ from 'jquery';
 import './Home.scss';
@@ -13,11 +15,13 @@ class Home extends Component {
     this.ready = this.ready.bind(this);
     this.pause = this.pause.bind(this);
     this.play = this.play.bind(this);
+    this.fadeOverlay = this.fadeOverlay.bind(this);
   }
 
   componentDidMount() {
+    this.props.setLen(posts.length);
     var newState = {};
-    posts[0].body.forEach((item, i) => {
+    posts[this.props.posts.index].body.forEach((item, i) => {
       if (item.youtubeId !== undefined) {
         newState[item.youtubeId] = {
           duration: 0, paused: false
@@ -68,18 +72,32 @@ class Home extends Component {
     var newState = Object.assign({}, this.state);
     newState[id].paused = false;
     this.setState(newState);
+    document.getElementById(id).parentElement
+    .parentElement.children[1].style.opacity = 0;
   }
 
   pause(id) {
     var newState = Object.assign({}, this.state);
     newState[id].paused = true;
     this.setState(newState);
+    document.getElementById(id).parentElement
+    .parentElement.children[1].style.opacity = 0.7;
+  }
+
+  fadeOverlay(e, id) {
+    var fadeInterval = setInterval(() => {
+      if (e.target.getCurrentTime() > 0) {
+        document.getElementById(id).parentElement
+        .parentElement.children[1].style.opacity = 0;
+        clearInterval(fadeInterval);
+      }
+    }, 100);
   }
 
   render() {
     var post;
     if (posts.length > 0) {
-      var bodyContent = posts[0].body.map((item, i) => {
+      var bodyContent = posts[this.props.posts.index].body.map((item, i) => {
         return (
           <div key={i} className="body-item">
             <div className="item-header">
@@ -87,14 +105,18 @@ class Home extends Component {
               <span>{item.minute_mark}</span>
             </div>
             {item.youtubeId !== undefined ? (
-              <div ref={item.youtubeId}>
+              <div className="youtube-container" ref={item.youtubeId}>
                 <YouTube id={item.youtubeId} videoId={item.youtubeId} onReady={(e) => {
-                  this.ready(e, item.start, item.length, item.youtubeId)}}
-                  onPause={() => { this.pause(item.youtubeId); }}
+                  this.ready(e, item.start, item.length, item.youtubeId);
+                  this.fadeOverlay(e, item.youtubeId);
+                }} onPause={() => { this.pause(item.youtubeId); }}
                   onPlay={() => { this.play(item.youtubeId); }}
                   opts={{ playerVars: {
                     mute: 1, rel: 0, controls: 0, showinfo: 0
                 }}} />
+                <span className="overlay">
+                  <i className="fa fa-film" aria-hidden="true"></i>
+                </span>
               </div>
             ) : (
               <img src={item.image} />
@@ -109,28 +131,28 @@ class Home extends Component {
         <div className="intro">
           <div className="intro-header">
             <div className="left-side">
-              <h1>{posts[0].intro.post_title}</h1>
+              <h1>{posts[this.props.posts.index].intro.post_title}</h1>
               <p className="by-text">by anomalous film</p>
             </div>
             <div className="right-side">
               <p className="movie-title">
-                {posts[0].intro.movie_title}
+                {posts[this.props.posts.index].intro.movie_title}
               </p>
             </div>
           </div>
           <div className="content">
-            {posts[0].intro.content}
+            {posts[this.props.posts.index].intro.content}
           </div>
         </div>
         {bodyContent}
-        {posts[0].previd ? (
+        {posts[this.props.posts.index].previd ? (
           <div className="blank-para">
-            <p className="content">{posts[0].previd}</p>
-            <iframe src={posts[0].scene} allowFullScreen></iframe>
+            <p className="content">{posts[this.props.posts.index].previd}</p>
+            <iframe src={posts[this.props.posts.index].scene} allowFullScreen></iframe>
           </div>
         ) : null}
         <div className="blank-para">
-          <p className="content">{posts[0].conclusion}</p>
+          <p className="content">{posts[this.props.posts.index].conclusion}</p>
         </div>
       </div>);
     }
@@ -142,4 +164,14 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts
+  }
+}
+
+const mapDispatchToProps = {
+  setLen: setLen
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
