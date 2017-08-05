@@ -88,7 +88,7 @@ class Nav extends Component {
               placeholder="search..." value={this.props.posts.search} />
             {this.props.posts.search ? null : (
               <div className="action-buttons">
-                {this.props.posts.index > 1 ? (
+                {this.props.posts.index > 0 ? (
                   <span onClick={this.home}>
                     <i className="fa fa-home" aria-hidden="true"></i>
                   </span>
