@@ -13,6 +13,10 @@ const initState = {
   search: ''
 };
 
+function saveIndex(index) {
+  localStorage.setItem("index", index);
+}
+
 export default function reducer(state=initState, action) {
   let editState = Object.assign({}, state);
   switch(action.type) {
@@ -24,18 +28,22 @@ export default function reducer(state=initState, action) {
       return Object.assign({}, state, editState);
     case HOME:
       editState.index = 0;
+      saveIndex(editState.index);
       return Object.assign({}, state, editState);
     case PREV:
       editState.index = editState.index - 1;
+      saveIndex(editState.index);
       return Object.assign({}, state, editState);
     case NEXT:
       editState.index = editState.index + 1;
+      saveIndex(editState.index);
       return Object.assign({}, state, editState);
     case SRCH:
       editState.search = action.payload;
       return Object.assign({}, state, editState);
     case GOTO:
       editState.index = action.payload;
+      saveIndex(editState.index);
       editState.search = '';
       return Object.assign({}, state, editState);
     default: return state;

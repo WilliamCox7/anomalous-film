@@ -61,7 +61,7 @@ module.exports = [
       }
     ],
     "previd": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus ex dolor, quis gravida metus commodo sed. In lobortis massa ut orci pretium sagittis. Donec porttitor laoreet erat, at luctus lacus accumsan vitae.",
-    "scene": "https://www.youtube.com/embed/DjffIi2Pl7M?rel=0",
+    "scene": "https://www.youtube.com/embed/DjffIi2Pl7M?rel=0&showinfo=0",
     "conclusion": "Duis eu purus vel libero congue ultricies. Integer lacinia risus hendrerit velit tincidunt, non malesuada arcu sollicitudin. In hac habitasse platea dictumst. Nullam non vehicula magna. Morbi ac lectus quis nisl auctor scelerisque. Integer porta felis eu bibendum condimentum. Nunc et ultricies eros, ac tempus turpis. Sed a eros tortor. Sed in ornare erat, in iaculis nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla imperdiet elementum pellentesque."
   },
   {
@@ -86,7 +86,7 @@ module.exports = [
       }
     ],
     "previd": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus ex dolor, quis gravida metus commodo sed. In lobortis massa ut orci pretium sagittis. Donec porttitor laoreet erat, at luctus lacus accumsan vitae.",
-    "scene": "https://www.youtube.com/embed/DjffIi2Pl7M?rel=0",
+    "scene": "https://www.youtube.com/embed/DjffIi2Pl7M?rel=0&showinfo=0",
     "conclusion": "Duis eu purus vel libero congue ultricies. Integer lacinia risus hendrerit velit tincidunt, non malesuada arcu sollicitudin. In hac habitasse platea dictumst. Nullam non vehicula magna. Morbi ac lectus quis nisl auctor scelerisque. Integer porta felis eu bibendum condimentum. Nunc et ultricies eros, ac tempus turpis. Sed a eros tortor. Sed in ornare erat, in iaculis nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla imperdiet elementum pellentesque."
   },
   {
@@ -111,7 +111,7 @@ module.exports = [
       }
     ],
     "previd": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus ex dolor, quis gravida metus commodo sed. In lobortis massa ut orci pretium sagittis. Donec porttitor laoreet erat, at luctus lacus accumsan vitae.",
-    "scene": "https://www.youtube.com/embed/DjffIi2Pl7M?rel=0",
+    "scene": "https://www.youtube.com/embed/DjffIi2Pl7M?rel=0&showinfo=0",
     "conclusion": "Duis eu purus vel libero congue ultricies. Integer lacinia risus hendrerit velit tincidunt, non malesuada arcu sollicitudin. In hac habitasse platea dictumst. Nullam non vehicula magna. Morbi ac lectus quis nisl auctor scelerisque. Integer porta felis eu bibendum condimentum. Nunc et ultricies eros, ac tempus turpis. Sed a eros tortor. Sed in ornare erat, in iaculis nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla imperdiet elementum pellentesque."
   },
   {
@@ -136,7 +136,7 @@ module.exports = [
       }
     ],
     "previd": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus ex dolor, quis gravida metus commodo sed. In lobortis massa ut orci pretium sagittis. Donec porttitor laoreet erat, at luctus lacus accumsan vitae.",
-    "scene": "https://www.youtube.com/embed/DjffIi2Pl7M?rel=0",
+    "scene": "https://www.youtube.com/embed/DjffIi2Pl7M?rel=0&showinfo=0",
     "conclusion": "Duis eu purus vel libero congue ultricies. Integer lacinia risus hendrerit velit tincidunt, non malesuada arcu sollicitudin. In hac habitasse platea dictumst. Nullam non vehicula magna. Morbi ac lectus quis nisl auctor scelerisque. Integer porta felis eu bibendum condimentum. Nunc et ultricies eros, ac tempus turpis. Sed a eros tortor. Sed in ornare erat, in iaculis nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla imperdiet elementum pellentesque."
   },
   {
@@ -161,7 +161,7 @@ module.exports = [
       }
     ],
     "previd": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus ex dolor, quis gravida metus commodo sed. In lobortis massa ut orci pretium sagittis. Donec porttitor laoreet erat, at luctus lacus accumsan vitae.",
-    "scene": "https://www.youtube.com/embed/DjffIi2Pl7M?rel=0",
+    "scene": "https://www.youtube.com/embed/DjffIi2Pl7M?rel=0&showinfo=0",
     "conclusion": "Duis eu purus vel libero congue ultricies. Integer lacinia risus hendrerit velit tincidunt, non malesuada arcu sollicitudin. In hac habitasse platea dictumst. Nullam non vehicula magna. Morbi ac lectus quis nisl auctor scelerisque. Integer porta felis eu bibendum condimentum. Nunc et ultricies eros, ac tempus turpis. Sed a eros tortor. Sed in ornare erat, in iaculis nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla imperdiet elementum pellentesque."
   }
 ]

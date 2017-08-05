@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { home, prev, next, search } from '../reducers/postReducer';
+import { home, prev, next, search, setPost } from '../reducers/postReducer';
 import fb from '../src/fb.svg';
 import './Nav.scss';
 
@@ -9,6 +9,10 @@ class Nav extends Component {
   constructor() {
     super();
     this.search = this.search.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.setPost(Number(localStorage.getItem("index")) || 0);
   }
 
   search(e) {
@@ -62,7 +66,8 @@ const mapDispatchToProps = {
   home: home,
   prev: prev,
   next: next,
-  search: search
+  search: search,
+  setPost: setPost
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
