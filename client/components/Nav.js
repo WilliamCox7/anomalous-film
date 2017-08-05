@@ -22,7 +22,8 @@ class Nav extends Component {
     var index = localStorage.getItem("index");
     if (path && index) {
       this.props.setPost(Number(index));
-      this.setURL(path);
+      var title = path.split("/")[1].split("-").join(" ");
+      this.setURL(title);
     } else {
       this.props.setPost(0);
       this.setURL("");
