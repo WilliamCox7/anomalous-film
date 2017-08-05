@@ -155,6 +155,8 @@ class Home extends Component {
         <div className="blank-para">
           <p className="content">{posts[this.props.posts.index].conclusion}</p>
         </div>
+        <div className="fb-comments" data-href={posts[this.props.posts.index].fb}
+        data-width="474" data-numposts="5"></div>
       </div>);
     }
     return (

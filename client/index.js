@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import thunk from 'redux-thunk';
 import { Provider} from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { Router, Route, hashHistory } from "react-router";
 import rootReducer from './rootReducer';
 
 /* COMPONENTS */
@@ -23,11 +22,7 @@ let store = createStore(
 /* ROUTES */
 ReactDOM.render (
   <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route component={App}>
-        <Route path="/" component={Home} />
-      </Route>
-    </Router>
+    <App />
   </Provider>
   , document.getElementById('root')
 );

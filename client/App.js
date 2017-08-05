@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { set } from './reducers/postReducer';
 import Nav from './components/Nav';
+import Home from './components/Home';
 import './reset.scss';
 import './main.scss';
 
@@ -17,7 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        {this.props.children}
+        <Home />
       </div>
     );
   }
