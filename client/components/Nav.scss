@@ -74,5 +74,22 @@
         }
       }
     }
+    .login {
+      position: absolute;
+      right: 0;
+      border: solid 1px $border;
+      padding: 12px 9px 0px 17px;
+      border-radius: 4px;
+      background: $gray2;
+      img {
+        height: 24px;
+        margin-bottom: -3px;
+        border-bottom: solid 1px $border;
+      }
+      &:hover {
+        background: $gray3;
+        cursor: pointer;
+      }
+    }
   }
 }
