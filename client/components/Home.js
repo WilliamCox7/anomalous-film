@@ -196,6 +196,9 @@ class Home extends Component {
                 </span>
                 {this.state.ids[item.youtubeId] ? (
                   <div className="mute-buttons">
+                    <i className="fa fa-pause" aria-hidden="true" onClick={
+                      () => {this.pause(item.youtubeId);}
+                    }></i>
                     {this.state.ids[item.youtubeId].mute ? (
                       <i className="fa fa-volume-off" aria-hidden="true" onClick={
                         (e) => {this.toggleMute(e, item.youtubeId)}}></i>
