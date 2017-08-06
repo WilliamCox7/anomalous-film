@@ -45,8 +45,9 @@ class Results extends Component {
           this.props.posts.search.toLowerCase()
         ) > -1) {
           return (
-            <div onClick={() => {this.setPost(i, post.intro.movie_title)}} key={i}
-              className="image-container">
+            <div onClick={() => {
+              this.setPost(i, post.intro.post_title)
+            }} key={i} className="image-container">
               <img src={post.poster} />
               <p>{post.intro.movie_title}</p>
             </div>

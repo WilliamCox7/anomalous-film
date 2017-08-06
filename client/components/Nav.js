@@ -67,7 +67,7 @@ class Nav extends Component {
     this.props.prev();
     var index = this.props.posts.index-1;
     if (index < 0) { index = 0; }
-    this.setURL(this.props.posts.posts[index].intro.movie_title);
+    this.setURL(this.props.posts.posts[index].intro.post_title);
     window.scroll(0, 0);
   }
 
@@ -75,7 +75,7 @@ class Nav extends Component {
     this.props.next();
     var index = this.props.posts.index+1;
     if (index > this.props.posts.length-1) { index = this.props.posts.length-1; }
-    this.setURL(this.props.posts.posts[index].intro.movie_title);
+    this.setURL(this.props.posts.posts[index].intro.post_title);
     window.scroll(0, 0);
   }
 

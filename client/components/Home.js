@@ -19,7 +19,6 @@ class Home extends Component {
       x: undefined,
       y: undefined
     };
-    this.ready = this.ready.bind(this);
     this.pause = this.pause.bind(this);
     this.play = this.play.bind(this);
     this.fadeOverlay = this.fadeOverlay.bind(this);
@@ -45,15 +44,11 @@ class Home extends Component {
         if (elementTop < botScreen && elementTop >= topScreen &&
         elementBot <= botScreen && elementBot > topScreen) {
           if (document.getElementById(prop).contentWindow) {
-            document.getElementById(prop).contentWindow.postMessage(
-              '{"event":"command","func":"' + 'playVideo' + '","args":""}', '*'
-            );
+            this.play(prop);
           }
         } else {
           if (document.getElementById(prop).contentWindow) {
-            document.getElementById(prop).contentWindow.postMessage(
-              '{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*'
-            );
+            this.pause(prop);
           }
         }
       }
@@ -62,65 +57,34 @@ class Home extends Component {
 
   setStateVid() {
     var newState = {ids: {}, curDown: false, x: undefined, y: undefined};
-    var index = 0;
-    if (localStorage["index"]) {
-      index = localStorage.getItem("index");
-    }
-    posts[index].body.forEach((item, i) => {
-      if (item.youtubeId !== undefined) {
-        newState.ids[item.youtubeId] = {
-          duration: 0, paused: false, mute: true
-        };
-      }
+    posts.forEach((post) => {
+      post.body.forEach((item) => {
+        if (item.youtubeId !== undefined) {
+          newState.ids[item.youtubeId] = {mute: true};
+        }
+      });
     });
-    if (posts[index].youtubeId) {
-      newState.ids[posts[index].youtubeId] = {
-        duration: 0, paused: false, mute: true
-      };
-    }
     this.setState(newState);
-  }
-
-  ready(e, start, length, id) {
-    this.setStateVid();
-    new Promise((resolve, reject) => {
-      var promInterval = setInterval(() => {
-        if (this.state.ids[id]) {
-          clearInterval(promInterval);
-          resolve(this.state.ids[id]);
-        }
-      }, 100);
-    }).then((vid) => {
-      var newState = Object.assign({}, this.state);
-      e.target.seekTo(start);
-      e.target.playVideo();
-      var interval = setInterval(() => {
-        if (!newState.ids[id].paused) {
-          newState.ids[id].duration += 1000;
-          if (newState.ids[id].duration === length) {
-            newState.ids[id].duration = 0;
-            clearInterval(interval);
-            this.ready(e, start, length, id);
-          }
-        }
-      }, 1000);
-    });
   }
 
   play(id) {
-    var newState = Object.assign({}, this.state);
-    newState.ids[id].paused = false;
-    this.setState(newState);
+    document.getElementById(id).contentWindow.postMessage(
+      '{"event":"command","func":"' + 'playVideo' + '","args":""}', '*'
+    );
     document.getElementById(id).parentElement
     .parentElement.children[1].style.opacity = 0;
+    document.getElementById(id).parentElement
+    .parentElement.children[2].style.display = 'flex';
   }
 
   pause(id) {
-    var newState = Object.assign({}, this.state);
-    newState.ids[id].paused = true;
-    this.setState(newState);
+    document.getElementById(id).contentWindow.postMessage(
+      '{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*'
+    );
     document.getElementById(id).parentElement
     .parentElement.children[1].style.opacity = 0.7;
+    document.getElementById(id).parentElement
+    .parentElement.children[2].style.display = 'none';
   }
 
   fadeOverlay(e, id) {
@@ -140,14 +104,14 @@ class Home extends Component {
           if (this.props.posts.index < this.props.posts.length-1) {
             this.props.next();
             this.endGesture();
-            this.setURL(posts[this.props.posts.index+1].intro.movie_title);
+            this.setURL(posts[this.props.posts.index+1].intro.post_title);
             window.scroll(0, 0);
           }
         } else if (this.state.x+50 < e.touches[0].clientX) {
           if (this.props.posts.index > 0) {
             this.props.prev();
             this.endGesture();
-            this.setURL(posts[this.props.posts.index-1].intro.movie_title);
+            this.setURL(posts[this.props.posts.index-1].intro.post_title);
             window.scroll(0, 0);
           }
         }
@@ -157,9 +121,7 @@ class Home extends Component {
 
   setURL(title) {
     var hash;
-    if (title.indexOf("/") > -1) {
-      hash = "/";
-    } else {
+    if (title.indexOf("/") > -1) { hash = "/"; } else {
       hash = "/" + title.split(" ").join("-").toLowerCase();
     }
     var curLoc = hashHistory.getCurrentLocation().pathname;
@@ -222,23 +184,24 @@ class Home extends Component {
             </div>
             {item.youtubeId !== undefined ? (
               <div className="youtube-container" ref={item.youtubeId}>
-                <YouTube id={item.youtubeId} videoId={item.youtubeId} onReady={(e) => {
-                  this.ready(e, item.start, item.length, item.youtubeId);
-                  this.fadeOverlay(e, item.youtubeId);
-                }} onPause={() => { this.pause(item.youtubeId); }}
+                <YouTube id={item.youtubeId} videoId={item.youtubeId}
+                  onPause={() => { this.pause(item.youtubeId); }}
                   onPlay={() => { this.play(item.youtubeId); }}
-                  opts={{ playerVars: {
-                    mute: 1, rel: 0, controls: 0, showinfo: 0
+                  onEnd={() => { this.play(item.youtubeId); }}
+                  opts={{ playerVars: { mute: 1, rel: 0, controls: 0,
+                    showinfo: 0, autoplay: 1
                 }}} />
                 <span className="overlay">
                   <i className="fa fa-film" aria-hidden="true"></i>
                 </span>
                 {this.state.ids[item.youtubeId] ? (
-                  <div className="mute-buttons" onClick={(e) => {this.toggleMute(e, item.youtubeId)}}>
+                  <div className="mute-buttons">
                     {this.state.ids[item.youtubeId].mute ? (
-                      <i className="fa fa-volume-off" aria-hidden="true"></i>
+                      <i className="fa fa-volume-off" aria-hidden="true" onClick={
+                        (e) => {this.toggleMute(e, item.youtubeId)}}></i>
                     ) : (
-                      <i className="fa fa-volume-up" aria-hidden="true"></i>
+                      <i className="fa fa-volume-up" aria-hidden="true" onClick={
+                        (e) => {this.toggleMute(e, item.youtubeId)}}></i>
                     )}
                   </div>
                 ) : null}
@@ -257,13 +220,12 @@ class Home extends Component {
         <div className="intro">
           <div className="intro-header">
             <div className="left-side">
-              <h1>{posts[this.props.posts.index].intro.post_title}</h1>
-              <p className="by-text">by anomalous film</p>
-            </div>
-            <div className="right-side">
-              {/* <p className="movie-title">
+              <h1>
+                {posts[this.props.posts.index].intro.post_title}
+                {" • "}
                 {posts[this.props.posts.index].intro.movie_title}
-              </p> */}
+              </h1>
+              <p className="by-text">by anomalous film</p>
             </div>
           </div>
           <div className="content">
@@ -274,27 +236,13 @@ class Home extends Component {
         {posts[this.props.posts.index].previd ? (
           <div className="blank-para">
             <p className="content">{posts[this.props.posts.index].previd}</p>
-            <div className="youtube-container" ref={posts[this.props.posts.index].youtubeId}>
-              <YouTube id={posts[this.props.posts.index].youtubeId} videoId={posts[this.props.posts.index].youtubeId} onReady={(e) => {
-                this.ready(e, posts[this.props.posts.index].start, posts[this.props.posts.index].length, posts[this.props.posts.index].youtubeId);
-                this.fadeOverlay(e, posts[this.props.posts.index].youtubeId);
-              }} onPause={() => { this.pause(posts[this.props.posts.index].youtubeId); }}
+            <div className="youtube-container">
+              <YouTube id={posts[this.props.posts.index].youtubeId} videoId={posts[this.props.posts.index].youtubeId}
+                onPause={() => { this.pause(posts[this.props.posts.index].youtubeId); }}
                 onPlay={() => { this.play(posts[this.props.posts.index].youtubeId); }}
-                opts={{ playerVars: {
-                  mute: 1, rel: 0, controls: 0, showinfo: 0
+                opts={{ playerVars: { mute: 0, rel: 0, controls: 1,
+                  showinfo: 0
               }}} />
-              <span className="overlay">
-                <i className="fa fa-film" aria-hidden="true"></i>
-              </span>
-              {this.state.ids[posts[this.props.posts.index].youtubeId] ? (
-                <div className="mute-buttons" onClick={(e) => {this.toggleMute(e, posts[this.props.posts.index].youtubeId)}}>
-                  {this.state.ids[posts[this.props.posts.index].youtubeId].mute ? (
-                    <i className="fa fa-volume-off" aria-hidden="true"></i>
-                  ) : (
-                    <i className="fa fa-volume-up" aria-hidden="true"></i>
-                  )}
-                </div>
-              ) : null}
             </div>
           </div>
         ) : null}
