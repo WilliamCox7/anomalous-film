@@ -225,7 +225,7 @@ class Home extends Component {
             <div className="left-side">
               <h1>
                 {posts[this.props.posts.index].intro.post_title}
-                {" • "}
+                {posts[this.props.posts.index].intro.movie_title ? " • " : null}
                 {posts[this.props.posts.index].intro.movie_title}
               </h1>
               <p className="by-text">by anomalous film</p>
