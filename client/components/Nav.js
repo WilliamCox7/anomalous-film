@@ -17,16 +17,18 @@ class Nav extends Component {
   }
 
   componentDidMount() {
-    var path = localStorage.getItem("path");
-    hashHistory.replace(path);
-    var index = localStorage.getItem("index");
-    if (path && index) {
+    if (localStorage["path"] && localStorage["index"]) {
+      var path = localStorage.getItem("path");
+      hashHistory.replace(path);
+      var index = localStorage.getItem("index");
       this.props.setPost(Number(index));
       var title = path.split("/")[1].split("-").join(" ");
       this.setURL(title);
     } else {
+      localStorage.setItem("index", 0);
+      localStorage.setItem("path", "/");
       this.props.setPost(0);
-      this.setURL("");
+      this.setURL("/");
     }
   }
 

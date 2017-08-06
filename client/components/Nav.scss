@@ -95,3 +95,37 @@
     }
   }
 }
+
+@media (max-width: 990px) {
+  .Nav {
+    .nav-container {
+      width: 500px;
+      .logo {
+        display: none;
+      }
+      .login {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 536px) {
+  .Nav {
+    height: 60px;
+    .nav-container {
+      width: 100%;
+      .action-container {
+        width: 100%;
+        padding: 0px 10px;
+        input {
+          width: 120px;
+          padding: 7.5px;
+        }
+        .action-buttons {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
