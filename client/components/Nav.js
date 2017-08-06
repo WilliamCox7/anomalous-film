@@ -30,6 +30,20 @@ class Nav extends Component {
       this.props.setPost(0);
       this.setURL("/");
     }
+    document.addEventListener('keydown', (e) => {
+      console.log('onkeydown');
+      if (e.keyCode == '37') {
+        if (this.props.posts.index > 0) {
+          console.log('prev');
+          this.prev();
+        }
+      } else if (e.keyCode == '39') {
+        if (this.props.posts.index < this.props.posts.length-1) {
+          console.log('next');
+          this.next();
+        }
+      }
+    });
   }
 
   search(e) {
@@ -51,13 +65,17 @@ class Nav extends Component {
 
   prev() {
     this.props.prev();
-    this.setURL(this.props.posts.posts[this.props.posts.index-1].intro.movie_title);
+    var index = this.props.posts.index-1;
+    if (index < 0) { index = 0; }
+    this.setURL(this.props.posts.posts[index].intro.movie_title);
     window.scroll(0, 0);
   }
 
   next() {
     this.props.next();
-    this.setURL(this.props.posts.posts[this.props.posts.index+1].intro.movie_title);
+    var index = this.props.posts.index+1;
+    if (index > this.props.posts.length-1) { index = this.props.posts.length-1; }
+    this.setURL(this.props.posts.posts[index].intro.movie_title);
     window.scroll(0, 0);
   }
 
