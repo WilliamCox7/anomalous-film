@@ -7,6 +7,7 @@ const initState = {
     work: "Mad Men",
     title: "The Wheel",
     thumbnail: "https://conversations.marketing-partners.com/wp-content/uploads/2012/09/madmen_title6101.jpg",
+    fb: 'http://www.anomalousfilm.com/#/the-wheel',
     sections: [
       {
         title: "Title 1",
