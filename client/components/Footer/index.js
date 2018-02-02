@@ -22,7 +22,7 @@ class Footer extends Component {
           </section>
 
           <section>
-            <a className="about" href="/about">
+            <a className="about" href="/#/about">
               about us
             </a>
           </section>

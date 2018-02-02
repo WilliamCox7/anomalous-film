@@ -1,5 +1,5 @@
 import { React, ReactDOM, Router, Route, hashHistory, thunk, Provider, createStore, applyMiddleware, compose } from './packages';
-import { Home } from './components';
+import { Home, About } from './components';
 import root from './root';
 import App from './App';
 
@@ -15,6 +15,7 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route component={App}>
         <Route path="/" component={Home} />
+        <Route path="/about" component={About} />
       </Route>
     </Router>
   </Provider>

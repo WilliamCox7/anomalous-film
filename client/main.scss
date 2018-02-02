@@ -38,3 +38,10 @@ input:focus, button:focus, select:focus, textarea:focus {
       -ms-flex-align: center;
           align-items: center;
 }
+
+.fd-c {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
