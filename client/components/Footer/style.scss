@@ -7,4 +7,30 @@
   border-top: solid 4px $gray;
   position: absolute;
   bottom: 0;
+  .footer-container {
+    width: 1000px;
+    section {
+      .sm {
+        padding: 5px 9px;
+        margin: 0px 3px;
+        color: $green-main;
+        font-size: 20px;
+        &:hover {
+          cursor: pointer;
+          color: $orange-main;
+        }
+      }
+      .about {
+        text-decoration: none;
+        color: $green-main;
+        border-radius: 4px;
+        padding: 3px 9px;
+        background: $gray;
+        &:hover {
+          cursor: pointer;
+          color: $orange-main;
+        }
+      }
+    }
+  }
 }

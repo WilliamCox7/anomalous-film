@@ -13,7 +13,7 @@ class Nav extends Component {
       <div className="Nav flex jc-c">
         <div className="nav-container flex jc-sb ai-c">
 
-          <section className="flex jc-sb">
+          <section>
             <a href="/" className="logo-link flex ai-c">
               anomalous
               <img src={logo} alt="logo" />
@@ -30,7 +30,7 @@ class Nav extends Component {
               <i className="fas fa-chevron-right"></i>
             </span>
           </section>
-          
+
         </div>
       </div>
     );
