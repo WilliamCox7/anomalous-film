@@ -1,5 +1,14 @@
 @import "../../vars.scss";
 
 .Post {
-
+  width: 560px;
+  margin: 100px auto;
+  .header {
+    margin: 20px 0px;
+    font-size: 26px;
+    color: $green-main;
+  }
+  .content {
+    margin-top: 20px;
+  }
 }

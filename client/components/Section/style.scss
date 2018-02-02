@@ -1,0 +1,69 @@
+@import "../../vars.scss";
+
+.Section {
+  margin-bottom: 45px;
+  h1 {
+    color: $orange-main;
+  }
+  .youtube-container {
+    width: 100%;
+    position: relative;
+    background: $gray-dark;
+  	padding-bottom: 56.25%;
+  	height: 0;
+    margin: 10px 0px;
+    -webkit-box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.35);
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.35);
+    iframe {
+      position: absolute;
+      z-index: 1;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+      opacity: 0.0;
+      -webkit-transition: opacity 1.5s ease;
+      transition: opacity 1.5s ease;
+    }
+    img {
+      width: 200px;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .mute-button {
+      position: absolute;
+      z-index: 2;
+      font-size: 22px;
+      color: white;
+      padding: 10px 15px;
+      right: 0;
+      opacity: 0.0;
+      -webkit-transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+      .active {
+        color: $orange-main;
+      }
+    }
+    &:hover {
+      .mute-button {
+        opacity: 1.0;
+      }
+    }
+  }
+  .content-container {
+    margin: 20px 0px;
+    p {
+      line-height: 20px;
+      font-size: 14px;
+      margin: 10px 0px;
+      .hi-green {
+        color: $green-main;
+      }
+    }
+  }
+}

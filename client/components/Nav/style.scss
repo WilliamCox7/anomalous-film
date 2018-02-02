@@ -5,7 +5,8 @@
   height: 60px;
   background: $gray-darkest;
   border-bottom: solid 4px $gray;
-  position: absolute;
+  position: fixed;
+  z-index: 2;
   top: 0;
   .nav-container {
     width: $container-width;

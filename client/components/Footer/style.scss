@@ -5,7 +5,8 @@
   height: 60px;
   background: $gray-darkest;
   border-top: solid 4px $gray;
-  position: absolute;
+  position: fixed;
+  z-index: 2;
   bottom: 0;
   .footer-container {
     width: $container-width;
