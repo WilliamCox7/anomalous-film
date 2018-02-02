@@ -1,0 +1,68 @@
+@import "../../vars.scss";
+
+.Nav {
+  width: 100%;
+  height: 60px;
+  background: $gray-darkest;
+  border-bottom: solid 4px $gray;
+  position: absolute;
+  top: 0;
+  .nav-container {
+    width: 1000px;
+    section {
+      .logo-link {
+        color: $green-main;
+        text-decoration: none;
+        img {
+          height: 30px;
+          margin: 10px;
+        }
+      }
+      input[type="text"] {
+        border-radius: 4px;
+        background: $gray;
+        border: none;
+        padding: 7px 9px;
+        margin-right: 3px;
+        color: $orange-main;
+        &:focus {
+          &::-webkit-input-placeholder {
+            color: $orange-main;
+          }
+          &:-ms-input-placeholder {
+            color: $orange-main;
+          }
+          &::-ms-input-placeholder {
+            color: $orange-main;
+          }
+          &::placeholder {
+            color: $orange-main;
+          }
+        }
+        &::-webkit-input-placeholder {
+          color: $green-main;
+        }
+        &:-ms-input-placeholder {
+          color: $green-main;
+        }
+        &::-ms-input-placeholder {
+          color: $green-main;
+        }
+        &::placeholder {
+          color: $green-main;
+        }
+      }
+      span {
+        padding: 5px 9px;
+        border-radius: 4px;
+        margin: 0px 3px;
+        background: $gray;
+        color: $green-main;
+        &:hover {
+          cursor: pointer;
+          color: $orange-main;
+        }
+      }
+    }
+  }
+}

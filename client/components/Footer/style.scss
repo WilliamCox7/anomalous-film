@@ -1,0 +1,10 @@
+@import "../../vars.scss";
+
+.Footer {
+  width: 100%;
+  height: 60px;
+  background: $gray-darkest;
+  border-top: solid 4px $gray;
+  position: absolute;
+  bottom: 0;
+}

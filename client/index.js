@@ -1,28 +1,22 @@
-/* PACKAGES */
-import React from "react";
-import ReactDOM from "react-dom";
-import thunk from 'redux-thunk';
-import { Provider} from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './rootReducer';
-
-/* COMPONENTS */
+import { React, ReactDOM, Router, Route, hashHistory, thunk, Provider, createStore, applyMiddleware, compose } from './packages';
+import { Home } from './components';
+import root from './root';
 import App from './App';
-import Home from './components/Home';
 
-/* STORE - REDUX */
 let store = createStore(
-  rootReducer,
-  compose(
+  root, compose(
     applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 )
 
-/* ROUTES */
-ReactDOM.render (
+ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={hashHistory}>
+      <Route component={App}>
+        <Route path="/" component={Home} />
+      </Route>
+    </Router>
   </Provider>
   , document.getElementById('root')
 );
