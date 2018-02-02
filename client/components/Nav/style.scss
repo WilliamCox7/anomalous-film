@@ -23,7 +23,6 @@
         background: $gray;
         border: none;
         padding: 7px 9px;
-        margin-right: 3px;
         color: $orange-main;
         &:focus {
           &::-webkit-input-placeholder {
@@ -55,7 +54,7 @@
       span {
         padding: 5px 9px;
         border-radius: 4px;
-        margin: 0px 3px;
+        margin: 0px 0px 0px 6px;
         background: $gray;
         color: $green-main;
         &:hover {

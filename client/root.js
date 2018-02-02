@@ -1,6 +1,6 @@
 import { combineReducers } from './packages';
-import post from './reducers/post';
+import posts from './reducers/posts';
 
 export default combineReducers({
-  post
+  posts
 });
