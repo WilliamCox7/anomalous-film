@@ -1,5 +1,6 @@
 import { React, Component } from '../../packages';
 import { logo } from '../../assets';
+import { moveLeft, moveRight } from '../modules';
 import './style.scss';
 
 class Nav extends Component {
@@ -24,10 +25,10 @@ class Nav extends Component {
           <section className="flex ai-c">
             <input type="text" placeholder="search..." />
             <span>
-              <i className="fas fa-chevron-left"></i>
+              <i className="fas fa-chevron-left" onClick={moveLeft}></i>
             </span>
             <span>
-              <i className="fas fa-chevron-right"></i>
+              <i className="fas fa-chevron-right" onClick={moveRight}></i>
             </span>
           </section>
 

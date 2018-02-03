@@ -1,8 +1,7 @@
 const SET = 'post/SET';
 
-const initState = {
-  prev: null,
-  curr: {
+const initState = [
+  {
     id: 1,
     work: "Mad Men",
     title: "The Wheel",
@@ -24,7 +23,16 @@ const initState = {
           "Ut pretium, elit eget <span class='hi-green'>interdum</span> ultricies, nisi odio eleifend odio, sit amet luctus neque odio quis lorem. Maecenas pulvinar pharetra mauris. Maecenas mollis libero eget leo hendrerit, vel aliquet mi lobortis.",
           "Vivamus accumsan massa sit amet erat porttitor, eget viverra quam imperdiet. Aliquam vitae dui mollis, suscipit sem at, tristique quam. Nam scelerisque porta metus ut gravida. Maecenas efficitur faucibus ex, quis efficitur eros tempus et."
         ]
-      },
+      }
+    ]
+  },
+  {
+    id: 2,
+    work: "Mad Men 2",
+    title: "The Wheel",
+    thumbnail: "https://conversations.marketing-partners.com/wp-content/uploads/2012/09/madmen_title6101.jpg",
+    fb: 'http://www.anomalousfilm.com/#/the-wheel',
+    sections: [
       {
         title: "Title 3",
         youtubeId: "xb8wYSjahpY",
@@ -32,7 +40,16 @@ const initState = {
           "Ut pretium, elit eget <span class='hi-green'>interdum</span> ultricies, nisi odio eleifend odio, sit amet luctus neque odio quis lorem. Maecenas pulvinar pharetra mauris. Maecenas mollis libero eget leo hendrerit, vel aliquet mi lobortis.",
           "Vivamus accumsan massa sit amet erat porttitor, eget viverra quam imperdiet. Aliquam vitae dui mollis, suscipit sem at, tristique quam. Nam scelerisque porta metus ut gravida. Maecenas efficitur faucibus ex, quis efficitur eros tempus et."
         ]
-      },
+      }
+    ]
+  },
+  {
+    id: 3,
+    work: "Mad Men 3",
+    title: "The Wheel",
+    thumbnail: "https://conversations.marketing-partners.com/wp-content/uploads/2012/09/madmen_title6101.jpg",
+    fb: 'http://www.anomalousfilm.com/#/the-wheel',
+    sections: [
       {
         title: "Title 4",
         youtubeId: "Ln0CS34BZNs",
@@ -50,9 +67,8 @@ const initState = {
         ]
       },
     ]
-  },
-  next: null
-}
+  }
+]
 
 export default function reducer(state=initState, action) {
   let editState = Object.assign({}, state);

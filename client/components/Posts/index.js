@@ -4,27 +4,20 @@ import './style.scss';
 
 class Posts extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      sections: buildSections(props.post)
+    }
   }
 
   render() {
-    
-    let prevPost = this.props.post.prev;
-    let currPost = this.props.post.curr;
-    let nextPost = this.props.post.next;
 
     return (
-      <div className="Post">
-        <section style={prevPost ? {display: "none"} : null}>
-          {prevPost ? (<Post post={prevPost} />) : null}
-        </section>
-        <section>
-          <Post post={currPost} />
-        </section>
-        <section style={nextPost ? {display: "none"} : null}>
-          {nextPost ? (<Post post={nextPost} />) : null}
-        </section>
+      <div className="Posts flex jc-c">
+        <div className="section-wrapper flex">
+          {this.state.sections}
+        </div>
       </div>
     );
   }
@@ -37,3 +30,13 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Posts);
+
+function buildSections(posts) {
+  return posts.map((post, i) => {
+    return (
+      <section className="rendered-sections" key={post.id} style={i !== 1 ? {opacity: 0} : null}>
+        <Post post={post} />
+      </section>
+    );
+  });
+}
