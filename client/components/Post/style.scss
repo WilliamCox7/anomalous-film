@@ -3,6 +3,9 @@
 .Post {
   width: 560px;
   margin: 100px auto;
+  @media(max-width: 560px) {
+    width: 100%;
+  }
   .header {
     margin: 20px 0px;
     font-size: 26px;

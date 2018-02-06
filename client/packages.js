@@ -6,8 +6,9 @@ import { Router, Route, hashHistory } from "react-router";
 import thunk from 'redux-thunk';
 import axios from 'axios';
 import YouTube from 'react-youtube';
+import SwipeableViews from 'react-swipeable-views';
 
 export {
   React, Component, connect, Provider, combineReducers, createStore, applyMiddleware,
-  compose, ReactDOM, Router, Route, hashHistory, thunk, axios, YouTube
+  compose, ReactDOM, Router, Route, hashHistory, thunk, axios, YouTube, SwipeableViews
 }

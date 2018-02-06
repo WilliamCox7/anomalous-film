@@ -1,23 +1,38 @@
-import { React, Component, connect } from '../../packages';
+import { React, Component, connect, SwipeableViews } from '../../packages';
 import { Post } from '../';
+import { handleTransition } from '../../reducers/posts';
 import './style.scss';
 
 class Posts extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      sections: buildSections(props.post)
+      index: 0
     }
+    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
+    this.handleChangeIndex = this.handleChangeIndex.bind(this);
+  }
+
+  handleTransitionEnd() {
+    this.props.handleTransition(this.state.index);
+  }
+
+  handleChangeIndex(index) {
+    this.setState({index: index});
   }
 
   render() {
 
+    let posts = this.props.posts.posts.map((post, i) => {
+      return <Post post={post} key={i} />;
+    });
+
     return (
-      <div className="Posts flex jc-c">
-        <div className="section-wrapper flex">
-          {this.state.sections}
-        </div>
+      <div className="Posts">
+        <SwipeableViews resistance onChangeIndex={this.handleChangeIndex} onTransitionEnd={this.handleTransitionEnd}>
+          {posts}
+        </SwipeableViews>
       </div>
     );
   }
@@ -25,18 +40,12 @@ class Posts extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    post: state.post
+    posts: state.posts
   }
 }
 
-export default connect(mapStateToProps)(Posts);
-
-function buildSections(posts) {
-  return posts.map((post, i) => {
-    return (
-      <section className="rendered-sections" key={post.id} style={i !== 1 ? {opacity: 0} : null}>
-        <Post post={post} />
-      </section>
-    );
-  });
+const mapDispatchToProps = {
+  handleTransition: handleTransition
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);

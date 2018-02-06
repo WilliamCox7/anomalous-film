@@ -15,7 +15,7 @@ class Home extends Component {
 
   render() {
 
-    let posts = createPostThumbnails(this.props.posts);
+    let posts = createPostThumbnails(this.props.posts.posts);
 
     return (
       <div className="Home flex fw-w">
