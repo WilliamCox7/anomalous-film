@@ -1,6 +1,6 @@
 import { React, Component, connect, SwipeableViews } from '../../packages';
 import { Post } from '../';
-import { handleTransition } from '../../reducers/posts';
+import { manipulateVideos } from '../modules';
 import './style.scss';
 
 class Posts extends Component {
@@ -8,29 +8,30 @@ class Posts extends Component {
   constructor() {
     super();
     this.state = {
-      index: 0
+      index: 2,
+      changedIndex: 2
     }
-    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
-    this.handleChangeIndex = this.handleChangeIndex.bind(this);
+    this.onChangeIndex = this.onChangeIndex.bind(this);
+    this.onTransitionEnd = this.onTransitionEnd.bind(this);
   }
 
-  handleTransitionEnd() {
-    this.props.handleTransition(this.state.index);
+  onChangeIndex(index) {
+    this.setState({changedIndex: index});
   }
 
-  handleChangeIndex(index) {
-    this.setState({index: index});
+  onTransitionEnd() {
+    manipulateVideos(this.props.posts.posts[this.state.changedIndex]);
   }
 
   render() {
 
     let posts = this.props.posts.posts.map((post, i) => {
-      return <Post post={post} key={i} />;
+      return <Post post={post} key={i} shown={i === this.state.index} />;
     });
 
     return (
       <div className="Posts">
-        <SwipeableViews resistance onChangeIndex={this.handleChangeIndex} onTransitionEnd={this.handleTransitionEnd}>
+        <SwipeableViews resistance index={this.state.index} onChangeIndex={this.onChangeIndex} onTransitionEnd={this.onTransitionEnd}>
           {posts}
         </SwipeableViews>
       </div>
@@ -44,8 +45,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = {
-  handleTransition: handleTransition
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect(mapStateToProps)(Posts);

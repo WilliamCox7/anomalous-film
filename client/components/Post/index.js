@@ -1,6 +1,6 @@
 import { React, Component } from '../../packages';
 import { Section } from '../';
-import { callPlayer } from '../modules';
+import { manipulateVideos } from '../modules';
 import './style.scss';
 
 class Post extends Component {
@@ -10,32 +10,14 @@ class Post extends Component {
   }
 
   componentDidMount() {
-    var topScreen = 60, botScreen = screen.height - 180;
-    var lefScreen = 0, rigScreen = screen.width;
-    let sections = this.props.post.sections;
-    document.addEventListener('scroll', () => {
-      sections.forEach((section) => {
-        let iframe = document.getElementById(section.youtubeId);
-        let iframeTop = iframe.getBoundingClientRect().top;
-        let iframeBot = iframe.getBoundingClientRect().bottom;
-        let iframeLef = iframe.getBoundingClientRect().left;
-        let iframeRig = iframe.getBoundingClientRect().right;
-        if (iframeTop < botScreen && iframeTop > topScreen
-         && iframeBot < botScreen && iframeBot > topScreen
-         && iframeLef < rigScreen && iframeLef >= lefScreen
-         && iframeRig <= rigScreen && iframeRig > lefScreen) {
-          callPlayer(section.youtubeId, "playVideo");
-        } else {
-          callPlayer(section.youtubeId, "pauseVideo");
-        }
-      });
-    });
+    document.addEventListener('scroll', () => manipulateVideos(this.props.post));
+    document.addEventListener('touchmove', () => manipulateVideos(this.props.post));
   }
 
   render() {
 
     let post = this.props.post;
-    let sections = buildSections(post.sections);
+    let sections = buildSections(post.sections, this.props.shown);
 
     return (
       <div className="Post flex fd-c">
@@ -61,8 +43,8 @@ class Post extends Component {
 
 export default Post;
 
-function buildSections(sections) {
+function buildSections(sections, shown) {
   return sections.map((section, i) => {
-    return <Section section={section} first={i === 0} key={i} />
+    return <Section section={section} first={i === 0} shown={shown} key={i} />
   });
 }

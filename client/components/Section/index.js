@@ -39,7 +39,7 @@ class Section extends Component {
           <YouTube id={section.youtubeId} videoId={section.youtubeId}
             opts={{ playerVars: { mute: 1, rel: 0, controls: 0,
             showinfo: 0, cc_load_policy: 1 }}}
-            onReady={() => reveal(section.youtubeId, this.props.first)}
+            onReady={() => reveal(section.youtubeId, this.props.first, this.props.shown)}
             onEnd={this.restart} />
           <img src={logoGray} />
           <div className="mute-button" onClick={() => this.toggleMute(section.youtubeId)}>
@@ -64,9 +64,9 @@ function buildContent(content) {
   });
 }
 
-function reveal(youtubeId, first) {
+function reveal(youtubeId, first, shown) {
   document.getElementById(youtubeId).style.opacity = 1;
-  if (first) {
+  if (first && shown) {
     callPlayer(youtubeId, "playVideo");
   }
 }

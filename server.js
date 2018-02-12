@@ -7,6 +7,10 @@ app.set('port', (process.env.PORT || config.port));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(express.static(__dirname + '/build'));
 
+const PostService = require('./services/PostService');
+
+app.get('/posts', PostService.getPosts);
+
 app.listen(app.get('port'), () => {
   console.log('localhost:' + app.get('port'));
 });
