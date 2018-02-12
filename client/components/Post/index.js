@@ -1,4 +1,4 @@
-import { React, Component } from '../../packages';
+import { React, Component, debounce } from '../../packages';
 import { Section } from '../';
 import { manipulateVideos } from '../modules';
 import './style.scss';
@@ -7,11 +7,16 @@ class Post extends Component {
 
   constructor() {
     super();
+    this.manipulateVideos = this.manipulateVideos.bind(this);
   }
 
   componentDidMount() {
-    document.addEventListener('scroll', () => manipulateVideos(this.props.post));
-    document.addEventListener('touchmove', () => manipulateVideos(this.props.post));
+    document.addEventListener('scroll', debounce(this.manipulateVideos, 200));
+    document.addEventListener('touchmove', debounce(this.manipulateVideos, 200));
+  }
+
+  manipulateVideos() {
+    manipulateVideos(this.props.post)
   }
 
   render() {

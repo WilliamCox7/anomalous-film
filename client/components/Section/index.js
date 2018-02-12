@@ -42,13 +42,7 @@ class Section extends Component {
             onReady={() => reveal(section.youtubeId, this.props.first, this.props.shown)}
             onEnd={this.restart} />
           <img src={logoGray} />
-          <div className="mute-button" onClick={() => this.toggleMute(section.youtubeId)}>
-            {this.state.mute ? (
-              <i className="fas fa-volume-off"></i>
-            ) : (
-              <i className="fas fa-volume-up active"></i>
-            )}
-          </div>
+          <div className="youtube-overlay" onClick={() => this.toggleMute(section.youtubeId)}></div>
         </div>
         <div className="content-container">{content}</div>
       </div>
