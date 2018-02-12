@@ -5,15 +5,17 @@
   height: 60px;
   background: $gray-darkest;
   border-top: solid 4px $gray;
-  position: fixed;
-  z-index: 2;
-  bottom: 0;
+  position: relative;
   .footer-container {
     width: $container-width;
+    @media(max-width: 850px) {
+      width: 100%;
+      padding: 0px 10px;
+    }
     section {
+      height: 20px;
       .sm {
-        padding: 5px 9px;
-        margin: 0px 3px;
+        margin-right: 20px;
         color: $green-main;
         font-size: 20px;
         &:hover {
@@ -24,9 +26,7 @@
       .about {
         text-decoration: none;
         color: $green-main;
-        border-radius: 4px;
-        padding: 3px 9px;
-        background: $gray;
+        font-size: 14px;
         &:hover {
           cursor: pointer;
           color: $orange-main;

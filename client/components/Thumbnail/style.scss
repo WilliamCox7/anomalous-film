@@ -23,6 +23,11 @@
       }
     }
   }
+  @media(max-width: 560px) {
+    width: calc((100vw / 2) - 15px);
+    height: calc((100vw / 2) - 15px);
+    margin: 5px;
+  }
   .thumb-link {
     overflow: hidden;
     position: relative;

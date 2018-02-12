@@ -4,6 +4,9 @@
   margin-bottom: 45px;
   h1 {
     color: $orange-main;
+    @media(max-width: 560px) {
+      margin: auto 10px;
+    }
   }
   .youtube-container {
     width: 100%;
@@ -48,6 +51,9 @@
   }
   .content-container {
     margin: 20px 0px;
+    @media(max-width: 560px) {
+      margin: 20px 10px;
+    }
     p {
       line-height: 20px;
       font-size: 14px;

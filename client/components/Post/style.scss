@@ -11,6 +11,9 @@
     margin: 20px 0px;
     font-size: 26px;
     color: $green-main;
+    @media(max-width: 560px) {
+      margin: 20px 10px;
+    }
   }
   .content {
     margin-top: 20px;

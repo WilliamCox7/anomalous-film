@@ -1,8 +1,19 @@
 @import "../../vars.scss";
 
 .Home {
-  width: $container-width + 14px;
+  max-width: $container-width + 14px;
+  height: calc(100vh - 160px);
   margin: auto;
   margin-top: 100px;
   position: relative;
+  @media(max-width: 560px) {
+    margin-bottom: 40px;
+    height: auto;
+  }
+  .home-wrapper {
+    @media(max-width: 560px) {
+      padding: 0px 5px;
+      margin-bottom: 40px;
+    }
+  }
 }

@@ -10,13 +10,25 @@
   top: 0;
   .nav-container {
     width: $container-width;
+    @media(max-width: 850px) {
+      width: 100%;
+      padding: 0px 10px;
+    }
     section {
       .logo-link {
         color: $green-main;
         text-decoration: none;
+        .logo-text {
+          @media(max-width: 560px) {
+            display: none;
+          }
+        }
         img {
           height: 30px;
           margin: 10px;
+          @media(max-width: 560px) {
+            margin: auto;
+          }
         }
       }
       input[type="text"] {
@@ -52,7 +64,7 @@
           color: $green-main;
         }
       }
-      span {
+      .nav-icon {
         padding: 5px 9px;
         border-radius: 4px;
         margin: 0px 0px 0px 6px;
@@ -61,6 +73,9 @@
         &:hover {
           cursor: pointer;
           color: $orange-main;
+        }
+        @media(max-width: 560px) {
+          display: none;
         }
       }
     }

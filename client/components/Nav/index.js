@@ -16,18 +16,18 @@ class Nav extends Component {
 
           <section>
             <a href="/" className="logo-link flex ai-c">
-              anomalous
+              <span className="logo-text">anomalous</span>
               <img src={logo} alt="logo" />
-              film
+              <span className="logo-text">film</span>
             </a>
           </section>
 
           <section className="flex ai-c">
             <input type="text" placeholder="search..." />
-            <span>
+            <span className="nav-icon">
               <i className="fas fa-chevron-left" onClick={moveLeft}></i>
             </span>
-            <span>
+            <span className="nav-icon">
               <i className="fas fa-chevron-right" onClick={moveRight}></i>
             </span>
           </section>

@@ -18,8 +18,10 @@ class Home extends Component {
     let posts = createPostThumbnails(this.props.posts.posts);
 
     return (
-      <div className="Home flex fw-w">
-        {posts}
+      <div className="Home">
+        <div className="home-wrapper flex fw-w">
+          {posts}
+        </div>
       </div>
     );
   }
