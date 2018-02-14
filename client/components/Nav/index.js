@@ -14,7 +14,7 @@ class Nav extends Component {
   }
 
   prev() {
-    if (window.location.pathname === '/') {
+    if (window.location.pathname === '/post') {
       if (this.props.posts.changedIndex > 0) {
         var changedIndex = this.props.posts.changedIndex - 1;
         changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
@@ -23,7 +23,7 @@ class Nav extends Component {
   }
 
   next() {
-    if (window.location.pathname === '/') {
+    if (window.location.pathname === '/post') {
       var length = filterPosts(this.props.posts.posts, this.props.posts.search).length;
       if (this.props.posts.changedIndex < length - 1) {
         var changedIndex = this.props.posts.changedIndex + 1;
