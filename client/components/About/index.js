@@ -8,6 +8,10 @@ class About extends Component {
     super();
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   loadLogo() {
     document.getElementById("logo").style.opacity = 1;
   }
