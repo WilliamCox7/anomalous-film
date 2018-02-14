@@ -1,7 +1,6 @@
-import { React, Component, connect, axios } from './packages';
-import { Nav, Footer } from './components';
+import { React, Component, connect, axios, BrowserRouter, Switch, Route } from './packages';
+import { Nav, Footer, Home, About, Posts } from './components';
 import { setPosts } from './reducers/posts';
-import { getPostsByIndex } from './components/modules';
 import './reset.scss';
 import './main.scss';
 
@@ -15,11 +14,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Nav />
-        {this.props.children}
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/post" component={Posts} />
+          </Switch>
+          <Footer />
+        </div>
+      </BrowserRouter>
     );
   }
 }

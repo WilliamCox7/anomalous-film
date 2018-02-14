@@ -1,4 +1,4 @@
-import { React, Component } from '../../packages';
+import { React, Component, Link } from '../../packages';
 import './style.scss';
 
 class Footer extends Component {
@@ -22,9 +22,9 @@ class Footer extends Component {
           </section>
 
           <section>
-            <a className="about" href="/#/about">
+            <Link to="/about" className="about">
               about us
-            </a>
+            </Link>
           </section>
 
         </div>
