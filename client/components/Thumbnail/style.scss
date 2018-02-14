@@ -4,7 +4,6 @@
   width: 194.5px;
   height: 194.5px;
   margin: 7px;
-  opacity: 0.0;
   -webkit-box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.35);
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.35);
   -webkit-transition: -webkit-box-shadow 0.3s ease;
@@ -13,6 +12,7 @@
   transition: box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
   -webkit-transition: opacity 1.5s ease;
   transition: opacity 1.5s ease;
+  opacity: 0.0;
   &:hover {
     cursor: pointer;
     -webkit-box-shadow: none;
