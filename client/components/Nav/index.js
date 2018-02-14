@@ -14,17 +14,21 @@ class Nav extends Component {
   }
 
   prev() {
-    if (this.props.posts.changedIndex > 0) {
-      var changedIndex = this.props.posts.changedIndex - 1;
-      changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
+    if (window.location.pathname === '/') {
+      if (this.props.posts.changedIndex > 0) {
+        var changedIndex = this.props.posts.changedIndex - 1;
+        changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
+      }
     }
   }
 
   next() {
-    var length = filterPosts(this.props.posts.posts, this.props.posts.search).length;
-    if (this.props.posts.changedIndex < length - 1) {
-      var changedIndex = this.props.posts.changedIndex + 1;
-      changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
+    if (window.location.pathname === '/') {
+      var length = filterPosts(this.props.posts.posts, this.props.posts.search).length;
+      if (this.props.posts.changedIndex < length - 1) {
+        var changedIndex = this.props.posts.changedIndex + 1;
+        changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
+      }
     }
   }
 
