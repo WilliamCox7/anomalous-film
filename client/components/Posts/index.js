@@ -1,46 +1,55 @@
 import { React, Component, connect, SwipeableViews } from '../../packages';
 import { Post } from '../';
-import { manipulateVideos } from '../modules';
+import { manipulateVideos, changePost } from '../modules';
+import { setIndex, setChangedIndex } from '../../reducers/posts';
 import './style.scss';
 
 class Posts extends Component {
 
   constructor() {
     super();
-    this.state = {
-      index: 0,
-      changedIndex: 0
-    }
     this.onChangeIndex = this.onChangeIndex.bind(this);
     this.onTransitionEnd = this.onTransitionEnd.bind(this);
   }
 
   componentDidMount() {
     var postIndex = Number(localStorage.getItem("postIndex"));
-    console.log(postIndex);
     if (postIndex !== null) {
-      this.setState({index: postIndex});
+      changePost(postIndex, this.props.setIndex, this.props.setChangedIndex);
     }
+    window.addEventListener("keydown", (e) => {
+      if (e.keyCode === 37) {
+        if (this.props.posts.changedIndex > 0) {
+          var changedIndex = this.props.posts.changedIndex - 1;
+          changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
+        }
+      } else if (e.keyCode === 39) {
+        if (this.props.posts.changedIndex < this.props.posts.posts.length - 1) {
+          var changedIndex = this.props.posts.changedIndex + 1;
+          changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
+        }
+      }
+    });
   }
 
   onChangeIndex(index) {
-    this.setState({changedIndex: index});
+    this.props.setChangedIndex(index);
     localStorage.setItem("postIndex", index);
   }
 
   onTransitionEnd() {
-    manipulateVideos(this.props.posts.posts[this.state.changedIndex]);
+    manipulateVideos(this.props.posts.posts[this.props.posts.changedIndex]);
   }
 
   render() {
 
     let posts = this.props.posts.posts.map((post, i) => {
-      return <Post post={post} key={i} shown={i === this.state.index} />;
+      return <Post post={post} key={i} shown={i === this.props.posts.index} />;
     });
 
     return (
       <div className="Posts">
-        <SwipeableViews resistance index={this.state.index} onChangeIndex={this.onChangeIndex} onTransitionEnd={this.onTransitionEnd}>
+        <SwipeableViews resistance index={this.props.posts.index} onChangeIndex={this.onChangeIndex} onTransitionEnd={this.onTransitionEnd}>
           {posts}
         </SwipeableViews>
       </div>
@@ -54,4 +63,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Posts);
+const mapDispatchToProps = {
+  setIndex: setIndex,
+  setChangedIndex: setChangedIndex
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);

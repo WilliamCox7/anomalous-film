@@ -1,8 +1,7 @@
 import { callPlayer } from './call-player';
-import { moveLeft } from './move-left';
-import { moveRight } from './move-right';
+import { changePost } from './change-post';
 import { manipulateVideos } from './manipulate-videos';
 
 export {
-  callPlayer, moveLeft, moveRight, manipulateVideos
+  callPlayer, changePost, manipulateVideos
 }
