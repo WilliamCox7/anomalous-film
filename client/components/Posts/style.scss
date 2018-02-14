@@ -1,6 +1,9 @@
 @import "../../vars.scss";
 
 .Posts {
+  & > div {
+    height: calc(100vh - 60px);
+  }
   .react-swipeable-view-container {
     height: 100vh;
   }
