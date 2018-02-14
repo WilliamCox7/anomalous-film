@@ -18,8 +18,13 @@ class Thumbnail extends Component {
       <div className="Thumbnail">
         <Link to="/post" className="thumb-link flex jc-c ai-c fd-c">
           <img src={this.props.post.thumbnail} onLoad={this.reveal} />
-          <h1>{this.props.post.work}</h1>
-          <h1>{this.props.post.title}</h1>
+          <div className="circle" style={{
+            backgroundImage: `url(${this.props.post.thumbnail})`}}>
+          </div>
+          <div className="circle-text flex fd-c ai-c">
+            <h1>{this.props.post.work}</h1>
+            <h1>{this.props.post.title}</h1>
+          </div>
         </Link>
       </div>
     );
