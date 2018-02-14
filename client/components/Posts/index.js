@@ -6,11 +6,8 @@ import './style.scss';
 
 class Posts extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: filterPosts(props.posts.posts, props.posts.search)
-    }
+  constructor() {
+    super();
     this.onChangeIndex = this.onChangeIndex.bind(this);
     this.onTransitionEnd = this.onTransitionEnd.bind(this);
   }
@@ -27,7 +24,8 @@ class Posts extends Component {
           changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
         }
       } else if (e.keyCode === 39) {
-        if (this.props.posts.changedIndex < this.state.posts.length - 1) {
+        length = filterPosts(this.props.posts.posts, this.props.posts.search).length;
+        if (this.props.posts.changedIndex < length - 1) {
           var changedIndex = this.props.posts.changedIndex + 1;
           changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
         }
@@ -46,7 +44,15 @@ class Posts extends Component {
 
   render() {
 
-    let posts = this.state.posts.map((post, i) => {
+    let posts = [];
+
+    if (this.props.posts.search) {
+      posts = filterPosts(this.props.posts.posts, this.props.posts.search);
+    } else {
+      posts = this.props.posts.posts;
+    }
+
+    posts = posts.map((post, i) => {
       return <Post post={post} key={i} shown={i === this.props.posts.index} />;
     });
 

@@ -6,11 +6,8 @@ import './style.scss';
 
 class Nav extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      length: filterPosts(props.posts.posts, props.posts.search).length
-    }
+  constructor() {
+    super();
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
     this.onSearch = this.onSearch.bind(this);
@@ -24,7 +21,8 @@ class Nav extends Component {
   }
 
   next() {
-    if (this.props.posts.changedIndex < this.state.length - 1) {
+    var length = filterPosts(this.props.posts.posts, this.props.posts.search).length;
+    if (this.props.posts.changedIndex < length - 1) {
       var changedIndex = this.props.posts.changedIndex + 1;
       changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
     }
