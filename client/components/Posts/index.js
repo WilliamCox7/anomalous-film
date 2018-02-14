@@ -1,13 +1,16 @@
 import { React, Component, connect, SwipeableViews } from '../../packages';
 import { Post } from '../';
-import { manipulateVideos, changePost } from '../modules';
-import { setIndex, setChangedIndex } from '../../reducers/posts';
+import { manipulateVideos, changePost, filterPosts } from '../modules';
+import { setIndex, setChangedIndex, setLength } from '../../reducers/posts';
 import './style.scss';
 
 class Posts extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: filterPosts(props.posts.posts, props.posts.search)
+    }
     this.onChangeIndex = this.onChangeIndex.bind(this);
     this.onTransitionEnd = this.onTransitionEnd.bind(this);
   }
@@ -24,7 +27,7 @@ class Posts extends Component {
           changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
         }
       } else if (e.keyCode === 39) {
-        if (this.props.posts.changedIndex < this.props.posts.posts.length - 1) {
+        if (this.props.posts.changedIndex < this.state.posts.length - 1) {
           var changedIndex = this.props.posts.changedIndex + 1;
           changePost(changedIndex, this.props.setIndex, this.props.setChangedIndex);
         }
@@ -43,7 +46,7 @@ class Posts extends Component {
 
   render() {
 
-    let posts = this.props.posts.posts.map((post, i) => {
+    let posts = this.state.posts.map((post, i) => {
       return <Post post={post} key={i} shown={i === this.props.posts.index} />;
     });
 
@@ -65,7 +68,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   setIndex: setIndex,
-  setChangedIndex: setChangedIndex
+  setChangedIndex: setChangedIndex,
+  setLength: setLength
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);

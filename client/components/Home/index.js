@@ -1,5 +1,7 @@
 import { React, Component, connect } from '../../packages';
 import { Thumbnail } from '../';
+import { filterPosts } from '../modules';
+import { setLength } from '../../reducers/posts';
 import './style.scss';
 
 class Home extends Component {
@@ -10,7 +12,15 @@ class Home extends Component {
 
   render() {
 
-    let posts = createPostThumbnails(this.props.posts.posts);
+    let posts = [];
+
+    if (this.props.posts.search) {
+      posts = filterPosts(this.props.posts.posts, this.props.posts.search);
+    } else {
+      posts = this.props.posts.posts;
+    }
+
+    posts = createPostThumbnails(posts);
 
     return (
       <div className="Home">
@@ -28,7 +38,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = {
+  setLength: setLength
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 function createPostThumbnails(posts) {
   return posts.map((post, i) => {

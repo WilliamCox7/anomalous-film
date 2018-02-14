@@ -1,6 +1,6 @@
 import { React, Component, connect, axios, BrowserRouter, Switch, Route } from './packages';
 import { Nav, Footer, Home, About, Posts } from './components';
-import { setPosts } from './reducers/posts';
+import { setPosts, setSearch } from './reducers/posts';
 import './reset.scss';
 import './main.scss';
 
@@ -10,6 +10,10 @@ class App extends Component {
     axios.get('/posts').then((response) => {
       this.props.setPosts(response.data);
     });
+    var searchText = localStorage.getItem("searchText");
+    if (searchText) {
+      this.props.setSearch(searchText);
+    }
   }
 
   render() {
@@ -28,7 +32,8 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-  setPosts: setPosts
+  setPosts: setPosts,
+  setSearch: setSearch
 }
 
 export default connect(null, mapDispatchToProps)(App);
