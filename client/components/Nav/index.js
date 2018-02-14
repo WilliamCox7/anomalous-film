@@ -1,4 +1,4 @@
-import { React, Component } from '../../packages';
+import { React, Component, Link } from '../../packages';
 import { logo } from '../../assets';
 import { moveLeft, moveRight } from '../modules';
 import './style.scss';
@@ -15,11 +15,11 @@ class Nav extends Component {
         <div className="nav-container flex jc-sb ai-c">
 
           <section>
-            <a href="/" className="logo-link flex ai-c">
+            <Link to="/" className="logo-link flex ai-c">
               <span className="logo-text">anomalous</span>
               <img src={logo} alt="logo" />
               <span className="logo-text">film</span>
-            </a>
+            </Link>
           </section>
 
           <section className="flex ai-c">
