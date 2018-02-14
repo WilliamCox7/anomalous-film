@@ -6,6 +6,11 @@ class Thumbnail extends Component {
   constructor() {
     super();
     this.reveal = this.reveal.bind(this);
+    this.setIndex = this.setIndex.bind(this);
+  }
+
+  setIndex() {
+    localStorage.setItem("postIndex", this.props.index);
   }
 
   reveal(e) {
@@ -16,7 +21,7 @@ class Thumbnail extends Component {
 
     return (
       <div className="Thumbnail">
-        <Link to="/post" className="thumb-link flex jc-c ai-c fd-c">
+        <Link to="/post" className="thumb-link flex jc-c ai-c fd-c" onClick={this.setIndex}>
           <img src={this.props.post.thumbnail} onLoad={this.reveal} />
           <div className="circle" style={{
             backgroundImage: `url(${this.props.post.thumbnail})`}}>

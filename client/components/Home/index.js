@@ -31,7 +31,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(Home);
 
 function createPostThumbnails(posts) {
-  return posts.map((post) => {
-    return <Thumbnail post={post} key={post.id} />;
+  return posts.map((post, i) => {
+    return <Thumbnail post={post} key={post.id} index={i} />;
   });
 }

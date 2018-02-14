@@ -8,15 +8,24 @@ class Posts extends Component {
   constructor() {
     super();
     this.state = {
-      index: 2,
-      changedIndex: 2
+      index: 0,
+      changedIndex: 0
     }
     this.onChangeIndex = this.onChangeIndex.bind(this);
     this.onTransitionEnd = this.onTransitionEnd.bind(this);
   }
 
+  componentDidMount() {
+    var postIndex = Number(localStorage.getItem("postIndex"));
+    console.log(postIndex);
+    if (postIndex !== null) {
+      this.setState({index: postIndex});
+    }
+  }
+
   onChangeIndex(index) {
     this.setState({changedIndex: index});
+    localStorage.setItem("postIndex", index);
   }
 
   onTransitionEnd() {
