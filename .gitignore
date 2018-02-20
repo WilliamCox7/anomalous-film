@@ -4,4 +4,4 @@ build/*
 !build/index.html
 DS_Store
 client/components/_Template
-.env
+keys.json

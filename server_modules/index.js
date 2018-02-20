@@ -1,3 +1,4 @@
 module.exports = {
-  getPosts: require('./get-posts')
+  getPosts: require('./get-posts'),
+  getMongoUri: require('./get-mongo-uri')
 }
