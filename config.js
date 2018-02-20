@@ -1,16 +1,8 @@
-// this app's port for development
+// config for development
 const PORT = 3000;
-
-// this app's server location
-const HOST = {
-  production: "",
-  development: "http://localhost:" + PORT
-}
-
-// this determines what environment the server is running in
-const ENV = "development";
+const MONGO = "mongodb://localhost:27017/anomalous";
 
 module.exports = {
-  api: HOST[ENV],
-  port: PORT,
+  mongoURI: MONGO,
+  port: PORT
 }

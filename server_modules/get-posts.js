@@ -1,5 +1,7 @@
+const env = require('dotenv').config();
+const config = require('../config');
 const mongoClient = require('mongodb').MongoClient;
-const mongoURI = 'mongodb://localhost:27017/anomalous';
+const mongoURI =  (config.mongoURI || env.MONGO);
 
 module.exports = () => {
   return new Promise(function(resolve, reject) {
