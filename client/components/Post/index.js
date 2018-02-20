@@ -33,14 +33,6 @@ class Post extends Component {
         <div className="content">
           {sections}
         </div>
-        <div className="fb-comments" data-href={post.fb}
-          data-width={(() => {
-            var width = 560;
-            var x = document.body.clientWidth;
-            if (x < 536) { width = x - 44; }
-            return width;
-          })()} data-numposts="5">
-        </div>
       </div>
     );
   }
