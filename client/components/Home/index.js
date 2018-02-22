@@ -46,6 +46,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 function createPostThumbnails(posts) {
   return posts.map((post, i) => {
-    return <Thumbnail post={post} key={post.id} index={i} />;
+    return <Thumbnail post={post} key={i} index={i} />;
   });
 }

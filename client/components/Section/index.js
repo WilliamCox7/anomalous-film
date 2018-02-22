@@ -59,8 +59,10 @@ function buildContent(content) {
 }
 
 function reveal(youtubeId, first, shown) {
-  document.getElementById(youtubeId).style.opacity = 1;
-  if (first && shown) {
-    callPlayer(youtubeId, "playVideo");
+  if (youtubeId) {
+    document.getElementById(youtubeId).style.opacity = 1;
+    if (first && shown) {
+      callPlayer(youtubeId, "playVideo");
+    }
   }
 }
