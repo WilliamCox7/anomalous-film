@@ -7,27 +7,28 @@ const initState = {
   posts: [],
   index: 0,
   changedIndex: 0,
-  search: ''
+  search: '',
+  filteredPosts: []
 }
 
 export default function reducer(state=initState, action) {
   let editState = Object.assign({}, state);
   switch(action.type) {
 
-    case SET:
+    case SET: // initializes posts and filteredPosts
       editState.posts = action.posts;
       editState.filteredPosts = action.posts;
       return Object.assign({}, state, editState);
 
-    case SET_IND:
+    case SET_IND: // sets the index (tracks what post user is on)
       editState.index = action.index;
       return Object.assign({}, state, editState);
 
-    case SET_CHA:
+    case SET_CHA: // sets changedIndex (is a reference to the index the user is going to)
       editState.changedIndex = action.index;
       return Object.assign({}, state, editState);
 
-    case SET_SCH:
+    case SET_SCH: // saves the users search text
       editState.search = action.search;
       return Object.assign({}, state, editState);
 

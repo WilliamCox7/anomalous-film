@@ -1,7 +1,7 @@
 import { React, Component, connect, SwipeableViews } from '../../packages';
-import { Post } from '../';
 import { manipulateVideos, changePost, filterPosts } from '../modules';
 import { setIndex, setChangedIndex, setLength } from '../../reducers/posts';
+import { Post } from '../';
 import './style.scss';
 
 class Posts extends Component {

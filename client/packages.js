@@ -9,6 +9,7 @@ import YouTube from 'react-youtube';
 import SwipeableViews from 'react-swipeable-views';
 import debounce from 'debounce';
 
+// exports all packages for easy access
 export {
   React, Component, connect, Provider, combineReducers, createStore, applyMiddleware,
   compose, ReactDOM, BrowserRouter, Switch, Route, Link, withRouter, thunk, axios, YouTube,

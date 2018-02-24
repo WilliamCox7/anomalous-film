@@ -4,16 +4,25 @@ import { setPosts, setSearch } from './reducers/posts';
 import './reset.scss';
 import './main.scss';
 
+// root component
 class App extends Component {
 
   componentDidMount() {
+
+    // initializes the posts reducer
     axios.get('/posts').then((response) => {
       this.props.setPosts(response.data);
+
+      // retrieves last saved search (pick up where user left off)
+      var searchText = localStorage.getItem("searchText");
+      if (searchText) this.props.setSearch(searchText);
+
+    }).catch((error) => {
+
+      // ToDo: if no posts come back, show an "empty" message
+
     });
-    var searchText = localStorage.getItem("searchText");
-    if (searchText) {
-      this.props.setSearch(searchText);
-    }
+
   }
 
   render() {

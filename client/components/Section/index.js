@@ -3,34 +3,36 @@ import { logoGray } from '../../assets';
 import { callPlayer } from '../modules';
 import './style.scss';
 
+// represents a "portion" of the post component
 class Section extends Component {
 
   constructor() {
     super();
     this.state = {
-      mute: true
+      mute: true // controls whether or not the video is muted
     }
     this.toggleMute = this.toggleMute.bind(this);
   }
 
+  // when the video ends, this is called and restarts the video
   restart(e) {
     e.target.playVideo();
   }
 
+  // toggles mute of the video by id (using youtubes api)
   toggleMute(youtubeId) {
-    this.setState({mute: !this.state.mute}, () => {
-      if (this.state.mute) {
-        callPlayer(youtubeId, "mute");
-      } else {
-        callPlayer(youtubeId, "unMute");
-      }
-    });
+    this.setState({mute: !this.state.mute}, () => this.state.mute
+      ? callPlayer(youtubeId, "mute");
+      : callPlayer(youtubeId, "unMute");
+    );
   }
 
   render() {
 
-    let section = this.props.section;
-    let content = buildContent(section.content);
+    // builds the content of the section as html
+    let content = this.props.section.content.map((paragraph, i) => {
+      return <p dangerouslySetInnerHTML={{__html: paragraph}} key={i}></p>
+    });
 
     return (
       <div className="Section">
@@ -52,17 +54,15 @@ class Section extends Component {
 
 export default Section;
 
-function buildContent(content) {
-  return content.map((paragraph, i) => {
-    return <p dangerouslySetInnerHTML={{__html: paragraph}} key={i}></p>
-  });
-}
-
+// when the video content has loaded, the iframe is revealed
 function reveal(youtubeId, first, shown) {
   if (youtubeId) {
     document.getElementById(youtubeId).style.opacity = 1;
+
+    // if the video is the currently displayed video, play the video automatically
     if (first && shown) {
       callPlayer(youtubeId, "playVideo");
     }
+    
   }
 }

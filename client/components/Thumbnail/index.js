@@ -1,6 +1,7 @@
 import { React, Component, Link } from '../../packages';
 import './style.scss';
 
+// the display of each post on the home page
 class Thumbnail extends Component {
 
   constructor() {
@@ -9,10 +10,12 @@ class Thumbnail extends Component {
     this.setIndex = this.setIndex.bind(this);
   }
 
+  // saves index in localStorage (takes user to that specific post)
   setIndex() {
     localStorage.setItem("postIndex", this.props.index);
   }
 
+  // changes opacity to thumbnail when image loads
   reveal(e) {
     e.target.parentElement.parentElement.style.opacity = 1;
   }
