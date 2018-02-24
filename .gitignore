@@ -1,7 +1,6 @@
 node_modules
-config
 build/*
 !build/index.html
-DS_Store
+.DS_Store
 client/components/_Template
-keys.json
+config.json
