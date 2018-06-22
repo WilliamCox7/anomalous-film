@@ -11,5 +11,7 @@ if (production) {
 }
 
 module.exports = function() {
+  console.log(production);
+  console.log(uri);
   return uri;
 }
