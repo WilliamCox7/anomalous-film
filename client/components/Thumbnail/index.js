@@ -1,8 +1,19 @@
 import { React, Component, Link } from '../../packages';
 import './style.scss';
 
-// the display of each post on the home page
+/**
+ * Thumbnail is a component that displays a clickable image
+ *  that leads the user to the corresponding post
+ * @extends Component
+ */
+
 class Thumbnail extends Component {
+
+  /**
+   * constructor
+   * @method this.reveal bound to component's context
+   * @method this.setIndex bound to component's context
+   */
 
   constructor() {
     super();
@@ -10,29 +21,45 @@ class Thumbnail extends Component {
     this.setIndex = this.setIndex.bind(this);
   }
 
-  // saves index in localStorage (takes user to that specific post)
+  /**
+   * @method setIndex saves index in localStorage (takes user to
+   *  that specific post)
+   */
+
   setIndex() {
     localStorage.setItem("postIndex", this.props.index);
   }
 
-  // changes opacity to thumbnail when image loads
+  /**
+   * @method reveal changes opacity to thumbnail when image loads
+   * @param {object} e event object
+   */
+
   reveal(e) {
     e.target.parentElement.parentElement.style.opacity = 1;
   }
 
-  render() {
+  /**
+   * @method render renders a javascript/html hybrid
+   * @return {jsx} what will be displayed from this component
+   */
 
+  render() {
     return (
       <div className="Thumbnail">
         <Link to="/post" className="thumb-link flex jc-c ai-c fd-c" onClick={this.setIndex}>
+
           <img src={this.props.post.thumbnail} onLoad={this.reveal} />
+
           <div className="circle" style={{
             backgroundImage: `url(${this.props.post.thumbnail})`}}>
           </div>
+
           <div className="circle-text flex fd-c ai-c">
             <h1>{this.props.post.work}</h1>
             <h1>{this.props.post.title}</h1>
           </div>
+
         </Link>
       </div>
     );
