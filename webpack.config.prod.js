@@ -37,8 +37,7 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.scss$/,
-      loader: 'style-loader!css-loader!sass-loader',
-      include: path.join(__dirname, 'client', 'styles')
+      loader: 'style-loader!css-loader!sass-loader'
     }, {
       test: /\.(jpg|png|svg)$/,
       loader: 'file-loader'
