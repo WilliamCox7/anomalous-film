@@ -16,25 +16,20 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude:/node_modules/,
-        loaders: [ 'babel']
-      },
-      {
-        test: /\.scss$/,
-        loader: 'style-loader!css-loader!sass-loader'
-      },
-      {
-        test: /\.(jpg|png|svg)$/,
-        loader: 'file-loader'
-      },
-      {
-        test: /\.(ttf|eot|woff|woff2)$/,
-        loader: 'file-loader'
-      }
-    ]
+    loaders: [{
+      test: /\.js$/,
+      exclude:/node_modules/,
+      loaders: [ 'babel']
+    }, {
+      test: /\.scss$/,
+      loader: 'style-loader!css-loader!sass-loader'
+    }, {
+      test: /\.(jpg|png|svg)$/,
+      loader: 'file-loader'
+    }, {
+      test: /\.(ttf|eot|woff|woff2)$/,
+      loader: 'file-loader'
+    }]
   },
 
   devServer: {
