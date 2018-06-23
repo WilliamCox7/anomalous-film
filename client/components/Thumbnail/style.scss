@@ -18,14 +18,14 @@
   @media(max-width: 835px) {
     min-width: calc((100vw / 3) - 15px);
     min-height: calc((100vw / 3) - 15px);
-    width: inherit;
-    height: inherit;
+    width: calc((100vw / 3) - 15px);
+    height: calc((100vw / 3) - 15px);
   }
   @media(max-width: 560px) {
     min-width: calc((100vw / 2) - 15px);
     min-height: calc((100vw / 2) - 15px);
-    width: inherit;
-    height: inherit;
+    width: calc((100vw / 2) - 15px);
+    height: calc((100vw / 2) - 15px);
     margin: 5px;
   }
   .thumb-link {
