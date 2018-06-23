@@ -19,7 +19,6 @@ class Thumbnail extends Component {
     super();
     this.reveal = this.reveal.bind(this);
     this.setIndex = this.setIndex.bind(this);
-    this.guid = this.guid.bind(this);
   }
 
   /**
@@ -45,26 +44,20 @@ class Thumbnail extends Component {
    * @return {jsx} what will be displayed from this component
    */
 
-   guid() {
-     function s4() {
-       return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-     }
-     return s4() + s4() + '-' + s4() + '-' + s4();
-   }
-
   render() {
     return (
       <div className="Thumbnail">
         <Link to="/post" className="thumb-link flex jc-c ai-c fd-c" onClick={this.setIndex}>
 
-          <img src={`${this.props.post.thumbnail}?nocache=${this.guid()}`} onLoad={this.reveal} />
+          <img src={this.props.post.thumbnail} onLoad={this.reveal} />
 
-          <div className="circle" style={{
-            backgroundImage: `url(${this.props.post.thumbnail}?nocache=${this.guid()})`}}>
+          <div className="rating">
             {this.props.rating ? (
               <div className="rating">{this.props.rating}</div>
             ) : null}
           </div>
+
+          <div className="circle"></div>
 
           <div className="circle-text flex fd-c ai-c">
             {this.props.post.work ? (
