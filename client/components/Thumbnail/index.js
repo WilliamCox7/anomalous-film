@@ -57,10 +57,10 @@ class Thumbnail extends Component {
       <div className="Thumbnail">
         <Link to="/post" className="thumb-link flex jc-c ai-c fd-c" onClick={this.setIndex}>
 
-          <img src={`${this.props.post.thumbnail}?nocache=${this.guid}`} onLoad={this.reveal} />
+          <img src={`${this.props.post.thumbnail}?nocache=${this.guid()}`} onLoad={this.reveal} />
 
           <div className="circle" style={{
-            backgroundImage: `url(${this.props.post.thumbnail})`}}>
+            backgroundImage: `url(${this.props.post.thumbnail}?nocache=${this.guid()})`}}>
             {this.props.rating ? (
               <div className="rating">{this.props.rating}</div>
             ) : null}
