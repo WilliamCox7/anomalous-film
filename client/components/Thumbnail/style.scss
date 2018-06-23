@@ -13,10 +13,19 @@
   -webkit-transition: opacity 1.5s ease;
   transition: opacity 1.5s ease;
   opacity: 0.0;
+  position: relative;
   cursor: pointer;
+  @media(max-width: 835px) {
+    min-width: calc((100vw / 3) - 15px);
+    min-height: calc((100vw / 3) - 15px);
+    width: inherit;
+    height: inherit;
+  }
   @media(max-width: 560px) {
     min-width: calc((100vw / 2) - 15px);
-    height: calc((100vw / 2) - 15px);
+    min-height: calc((100vw / 2) - 15px);
+    width: inherit;
+    height: inherit;
     margin: 5px;
   }
   .thumb-link {
@@ -44,7 +53,20 @@
       background-size: cover;
       background-position: center;
       -webkit-filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.6)) brightness(.2) hue-rotate(90deg);
-      filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.6)) brightness(.2) hue-rotate(90deg)
+      filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.6)) brightness(.2) hue-rotate(90deg);
+      .rating {
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        text-align: center;
+        color: white;
+        font-size: 120px;
+      }
     }
     .circle-text {
       z-index: 3;

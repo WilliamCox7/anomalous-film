@@ -7,19 +7,15 @@ class List extends Component {
 
     let list = this.props.list.list.map((item, i) => {
       return (
-        <div className="list-item flex jc-sb" key={i}>
-          <Thumbnail post={item} />
-          <div className="info flex fd-c">
-            <h1>{item.rating}%</h1>
-            <p>{item.note}</p>
-          </div>
-        </div>
+        <Thumbnail post={item} key={i} rating={i+1} />
       );
     });
 
     return (
       <div className="List">
-        {list}
+        <div className="list-container flex fw-w">
+          {list}
+        </div>
       </div>
     );
   }

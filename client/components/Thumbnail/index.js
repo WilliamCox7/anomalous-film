@@ -53,11 +53,17 @@ class Thumbnail extends Component {
 
           <div className="circle" style={{
             backgroundImage: `url(${this.props.post.thumbnail})`}}>
+            {this.props.rating ? (
+              <div className="rating">{this.props.rating}</div>
+            ) : null}
           </div>
 
           <div className="circle-text flex fd-c ai-c">
             {this.props.post.work ? (
               <h1>{this.props.post.work}</h1>
+            ) : null}
+            {this.props.post.rating ? (
+              <h1>{this.props.post.rating}%</h1>
             ) : null}
             {this.props.post.title ? (
               <h1>{this.props.post.title}</h1>
