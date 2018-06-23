@@ -1,8 +1,8 @@
 @import "../../vars.scss";
 
 .Thumbnail {
-  width: 194.5px;
-  height: 194.5px;
+  width: 190px;
+  height: 190px;
   margin: 7px;
   -webkit-box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.35);
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.35);
@@ -16,16 +16,16 @@
   position: relative;
   cursor: pointer;
   @media(max-width: 835px) {
-    min-width: calc((100vw / 3) - 15px);
-    min-height: calc((100vw / 3) - 15px);
-    width: calc((100vw / 3) - 15px);
-    height: calc((100vw / 3) - 15px);
+    min-width: calc((100vw / 3) - 20px);
+    min-height: calc((100vw / 3) - 20px);
+    width: calc((100vw / 3) - 20px);
+    height: calc((100vw / 3) - 20px);
   }
   @media(max-width: 560px) {
-    min-width: calc((100vw / 2) - 15px);
-    min-height: calc((100vw / 2) - 15px);
-    width: calc((100vw / 2) - 15px);
-    height: calc((100vw / 2) - 15px);
+    min-width: calc((100vw / 2) - 20px);
+    min-height: calc((100vw / 2) - 20px);
+    width: calc((100vw / 2) - 20px);
+    height: calc((100vw / 2) - 20px);
     margin: 5px;
   }
   .thumb-link {
@@ -47,7 +47,7 @@
     .circle {
       width: 80%;
       height: 80%;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.8);
       position: absolute;
       z-index: 3;
       border-radius: 50%;
@@ -57,7 +57,6 @@
       background-image: url('../../assets/overlay.png');
     }
     .rating {
-      width: 120px;
       height: 120px;
       position: absolute;
       top: 0;
@@ -74,6 +73,8 @@
       h1 {
         color: $orange-main;
         padding: 4px;
+        text-align: center;
+        width: 140px;
       }
     }
   }
