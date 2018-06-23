@@ -56,8 +56,12 @@ class Thumbnail extends Component {
           </div>
 
           <div className="circle-text flex fd-c ai-c">
-            <h1>{this.props.post.work}</h1>
-            <h1>{this.props.post.title}</h1>
+            {this.props.post.work ? (
+              <h1>{this.props.post.work}</h1>
+            ) : null}
+            {this.props.post.title ? (
+              <h1>{this.props.post.title}</h1>
+            ) : null}
           </div>
 
         </Link>

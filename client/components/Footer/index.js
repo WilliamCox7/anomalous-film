@@ -22,7 +22,10 @@ class Footer extends Component {
           </section>
 
           <section>
-            <Link to="/about" className="about">
+            <Link to="/list" className="link">
+              my top movies
+            </Link>
+            <Link to="/about" className="link">
               about us
             </Link>
           </section>
