@@ -9,7 +9,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <div className="Footer flex jc-c">
+      <div className="flex jc-c" id="Footer">
         <div className="footer-container flex jc-sb ai-c">
 
           <section className="flex jc-sb ai-c">

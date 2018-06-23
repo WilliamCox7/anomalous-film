@@ -5,11 +5,6 @@ import { setLength } from '../../reducers/posts';
 import './style.scss';
 
 class Home extends Component {
-
-  constructor() {
-    super();
-  }
-
   render() {
 
     let posts = [];
@@ -23,7 +18,7 @@ class Home extends Component {
     posts = createPostThumbnails(posts);
 
     return (
-      <div className="Home">
+      <div id="Home">
         <div className="home-wrapper flex fw-w">
           {posts}
         </div>
