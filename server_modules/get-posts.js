@@ -4,6 +4,7 @@ const mongoURI = require('./get-mongo-uri')();
 module.exports = () => new Promise((resolve, reject) => {
 
   mongoClient.connect(mongoURI, (err, db) => {
+    if (err) reject(err);
 
     // gets all posts in db
     db.collection('posts').find({}, (err, result) => {
