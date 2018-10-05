@@ -1,6 +1,5 @@
 const mongoClient = require('mongodb').MongoClient;
 const mongoURI = require('./get-mongo-uri')();
-console.log(mongoURI);
 
 module.exports = () => new Promise((resolve, reject) => {
   mongoClient.connect(mongoURI, (err, db) => {
