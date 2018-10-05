@@ -1,26 +1,27 @@
-// packages
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const ps = require('./server_services/post-service');
-const ls = require('./server_services/list-service');
-
-// express setup
+const https = require('https');
+const fs = require('fs');
+const config = require('./config');
 const app = module.exports = express();
+
 app.set('port', (process.env.PORT || 3000));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(express.static(__dirname + '/build'));
 
-// routes
-app.get('/api/posts', ps.getPosts);
-app.get('/api/list', ls.getList);
+require('./routes')(app);
 
-// wildcard route - allows for browser refresh while using react router
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './build/index.html'))
+  res.sendFile(path.resolve(__dirname, './build/index.html'));
 });
 
-// express app is running - success message
-app.listen(app.get('port'), () => {
+const options = {
+  key: fs.readFileSync(config.key),
+  cert: fs.readFileSync(config.cert)
+};
+
+https.createServer(options, app)
+.listen(app.get('port'), () => {
   console.log('localhost:' + app.get('port'));
 });

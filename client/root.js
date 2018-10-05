@@ -1,8 +1,6 @@
-import { combineReducers } from './packages';
-import posts from './reducers/posts';
+import { combineReducers } from 'redux';
 import list from './reducers/list';
 
-// combines all reducers into state
 export default combineReducers({
-  posts, list
+  list
 });

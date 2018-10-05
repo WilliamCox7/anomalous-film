@@ -1,0 +1,28 @@
+@import "../../vars.scss";
+
+#List {
+  .list-item {
+    position: relative;
+    overflow: hidden;
+    min-width: 100vw;
+    height: 100vh;
+    .background-img {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: calc(100% + 20px);
+    }
+    .gradient-overlay {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+    }
+    .item-ranking {
+      font-size: 60px;
+      position: absolute;
+      right: 60px;
+      bottom: 60px;
+      color: white;
+    }
+  }
+}
