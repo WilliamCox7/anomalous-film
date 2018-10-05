@@ -1,16 +1,14 @@
 @import "../../vars.scss";
 
 #Home {
-  max-width: $container-width + 14px;
-  min-height: calc(100vh - 169px);
+  max-width: calc(1350px - 10px);
+  min-height: calc(100vh - 130px);
   margin: auto;
-  margin-top: 100px;
+  margin-top: 70px;
   position: relative;
+  overflow: hidden;
   @media(max-width: 835px) {
     margin-top: 68px;
     min-height: calc(100vh - 137px);
-  }
-  .home-wrapper {
-    margin: 9px;
   }
 }

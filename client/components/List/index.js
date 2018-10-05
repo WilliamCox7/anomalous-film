@@ -13,7 +13,7 @@ class List extends Component {
 
     return (
       <div id="List">
-        <div className="list-container flex fw-w">
+        <div className="list-container flex">
           {list}
         </div>
       </div>

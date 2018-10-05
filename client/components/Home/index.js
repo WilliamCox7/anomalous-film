@@ -19,7 +19,7 @@ class Home extends Component {
 
     return (
       <div id="Home">
-        <div className="home-wrapper flex fw-w">
+        <div className="home-wrapper flex">
           {posts}
         </div>
       </div>
