@@ -1,6 +1,11 @@
 @import "../../vars.scss";
 
 #List {
+  .test {
+    position: absolute;
+    z-index: 5;
+    font-size: 30px;
+  }
   .list-item {
     position: relative;
     overflow: hidden;
@@ -8,9 +13,9 @@
     height: 100vh;
     .background-img {
       position: absolute;
-      top: -10px;
-      left: -10px;
-      width: calc(100% + 20px);
+      top: -60px;
+      left: -60px;
+      width: calc(100% + 150px);
     }
     .gradient-overlay {
       width: 100vw;
