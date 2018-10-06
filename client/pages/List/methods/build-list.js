@@ -1,15 +1,11 @@
 import React from 'react';
 import ItemInformation from '../../../components/ItemInformation';
 
-export default function buildList(list, transform) {
+export default function buildList(list) {
   return list.map((item, i) => {
     return (
       <div className="list-item" key={i}>
-        <div className="flex jc-c ai-c">
-          <img className="background-img" src={item.background} style={{
-            transform: `rotateX(${transform.rotateX}deg) rotateY(${transform.rotateY}deg)`
-          }} />
-        </div>
+        <img className="background-img" src={item.background} />
         <div className="gradient-overlay" style={{
           backgroundImage: `linear-gradient(45deg, ${item.gradient} 20%, transparent)`
         }}></div>
