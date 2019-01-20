@@ -3,5 +3,11 @@
 #Home {
   background: $dark-gray;
   height: 100%;
-  padding: 100px;
+  .film-wrapper {
+    position: relative;
+    height: 100%;
+    padding: 100px 0px;
+    max-width: calc(100% - 200px);
+    margin: auto;
+  }
 }
