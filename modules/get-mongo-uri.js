@@ -1,4 +1,4 @@
-let production = process.env.NODE_ENV; // determines if env is in production or development
+let production = process.env.NODE_ENV && process.env.NODE_ENV.production;
 
 let uri;
 
