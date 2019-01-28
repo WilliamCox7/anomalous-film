@@ -11,31 +11,7 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      list: [{
-        poster: "https://i.pinimg.com/originals/13/38/7b/13387b189da77d448e2e8b73bef3e9bb.jpg",
-        posterPos: "2px -96px",
-        like: true,
-        award: false,
-        title: "Whiplash",
-        released: new Date(2011, 3, 11),
-        tagline: "You can erase someone from your mind. Getting them out of your heart is another story.",
-        rating: 8.3,
-        imdb: 6.9,
-        viewed: new Date(2019, 0, 15),
-        location: "Megaplex at Thanksgiving Point"
-      }, {
-        poster: "https://i.pinimg.com/originals/13/38/7b/13387b189da77d448e2e8b73bef3e9bb.jpg",
-        posterPos: "2px -96px",
-        like: false,
-        award: true,
-        title: "Whiplash 2",
-        released: new Date(2011, 3, 11),
-        tagline: "You can erase someone from your mind. Getting them out of your heart is another story.",
-        rating: 8.3,
-        imdb: 6.9,
-        viewed: new Date(2018, 10, 15),
-        location: "Megaplex at Thanksgiving Point"
-      }],
+      list: [],
       filter: {
         column: 'viewed',
         ascending: true,
