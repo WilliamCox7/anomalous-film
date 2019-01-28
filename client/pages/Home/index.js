@@ -11,7 +11,7 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      list: [],
+      list: [{}],
       filter: {
         column: 'viewed',
         ascending: true,
