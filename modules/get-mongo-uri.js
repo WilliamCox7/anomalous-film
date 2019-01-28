@@ -1,4 +1,4 @@
-let production = process.env.NODE_ENV && process.env.NODE_ENV.production;
+let production = process.env.NODE_ENV;
 
 let uri;
 
