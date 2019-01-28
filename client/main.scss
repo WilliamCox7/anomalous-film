@@ -6,7 +6,9 @@ html, textarea {
 }
 
 html, body, #root, .App {
-  height: 100%;
+  background: $dark-gray;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 input[type=number]::-webkit-inner-spin-button,

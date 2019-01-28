@@ -8,9 +8,9 @@ class Content extends Component {
 
   render() {
 
-    let averageRating = (this.props.film.rating + this.props.film.imdb) / 2;
-    let releaseDate = moment(this.props.film.released).format('d MMM YYYY');
-    let viewDate = moment(this.props.film.viewed).format('d MMM YYYY');
+    let averageRating = (Number(this.props.film.rating) + Number(this.props.film.imdb)) / 2;
+    let releaseDate = moment(this.props.film.released).format('DD MMM YYYY');
+    let viewDate = moment(this.props.film.viewed).format('DD MMM YYYY');
 
     return (
       <div className="Content">
