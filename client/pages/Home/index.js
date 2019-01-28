@@ -42,7 +42,6 @@ class Home extends Component {
     axios.get('/api/all')
     .then((result) => {
       this.setState({list: result.data});
-      console.log(result);
     })
   }
 
