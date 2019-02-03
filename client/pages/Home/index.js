@@ -183,6 +183,9 @@ class Home extends Component {
       if (this.state.filter.column === "viewed" || this.state.filter.column === "released") {
         filteredValue = moment(filteredValue).format('DD MMM YYYY');
       }
+      if (this.state.filter.column === "rating" || this.state.filter.column === "imdb") {
+        filteredValue = Number(filteredValue).toFixed(1)
+      }
       let title = item.title.substring(0, 35);
       if (item.title.length >= 35) title += " ... ";
       if (item.type === "tv-season") title += ` S${item.season}`;

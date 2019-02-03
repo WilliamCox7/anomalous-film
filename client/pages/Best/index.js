@@ -57,12 +57,14 @@ class Best extends Component {
     let firstFilm = items.shift();
 
     let list = items.map((item, i) => {
+      let title = item.title.substring(0, 35);
+      if (item.title.length >= 35) title += " ... ";
       return (
         <div key={i} className="list-item flex" onClick={() => this.openFilmModal(item)}>
           <h1>{i+2}</h1>
           <div className="list-details flex jc-sb">
-            <h2>{item.title}</h2>
-            <h3>{item.rating}</h3>
+            <h2>{title}</h2>
+            <h3>{Number(item.rating).toFixed(1)}</h3>
           </div>
         </div>
       )
