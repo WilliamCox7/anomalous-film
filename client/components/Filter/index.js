@@ -13,8 +13,12 @@ class Filter extends Component {
     let valueOptions = this.props.filter.values.map((value, i) => {
       return <option key={i+1} value={value}>{value}</option>;
     });
+    valueOptions.unshift(<option key={0} value="">column value...</option>);
 
-    valueOptions.unshift(<option key={0} value=""></option>);
+    let titleOptions = this.props.filter.titles.map((title, i) => {
+      return <option key={i+1} value={title}>{title}</option>;
+    });
+    titleOptions.unshift(<option key={0} value="">title...</option>);
 
     return (
       <div className="Filter">
@@ -47,6 +51,24 @@ class Filter extends Component {
                 {valueOptions}
               </select>
             </div>
+            <div className="options-row-3 flex">
+              <select value={this.props.filter.type} name="type"
+                onChange={this.props.updateSelect}>
+                <option value="">film type...</option>
+                <option value="movie">movie</option>
+                <option value="tv-episode">tv episode</option>
+                <option value="tv-season">tv season</option>
+                <option value="tv-series">tv series</option>
+              </select>
+            </div>
+            {this.props.filter.type && this.props.filter.type !== "movie" && this.props.filter.type !== "tv-series" ? (
+              <div className="options-row-4 flex">
+                <select value={this.props.filter.title} name="title"
+                  onChange={this.props.updateSelect}>
+                  {titleOptions}
+                </select>
+              </div>
+            ) : null}
           </div>
         ) : null}
         {this.props.active ? (<div id="filter-overlay"></div>) : null}

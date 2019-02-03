@@ -14,9 +14,11 @@ class Home extends Component {
       list: [{}],
       filter: {
         column: 'viewed',
-        ascending: true,
+        ascending: false,
         value: "",
-        values: []
+        values: [],
+        type: "",
+        titles: []
       },
       filterActive: false,
       filmModal: false,
@@ -30,6 +32,7 @@ class Home extends Component {
     this.compileValues = this.compileValues.bind(this);
     this.openFilmModal = this.openFilmModal.bind(this);
     this.closeFilmModal = this.closeFilmModal.bind(this);
+    this.compileTitles = this.compileTitles.bind(this);
   }
 
   componentDidMount() {
@@ -63,6 +66,15 @@ class Home extends Component {
     this.setState(newState);
   }
 
+  compileTitles() {
+    let newState = Object.assign({}, this.state);
+    let list = newState.list.filter((film) => film.type === newState.filter.type);
+    let titles = list.map((film) => film.title);
+    titles = titles.filter((item, pos, self) => self.indexOf(item) == pos);
+    newState.filter.titles = titles;
+    this.setState(newState);
+  }
+
   toggleFilter() {
     this.setState({filterActive: !this.state.filterActive});
   }
@@ -91,6 +103,7 @@ class Home extends Component {
     }
     this.setState(newState, () => {
       if (selectName === "column") this.compileValues();
+      else if (selectName === "type" && newState.filter.type !== "movie" && newState.filter.type !== "tv-series") this.compileTitles();
     });
   }
 
@@ -110,6 +123,24 @@ class Home extends Component {
         return true;
       }
     });
+
+    if (filter.type) {
+      filtered = filtered.filter((item) => {
+        if (item.type === filter.type) {
+          return true;
+        }
+        return false;
+      });
+    }
+
+    if (filter.title) {
+      filtered = filtered.filter((item) => {
+        if (item.title === filter.title) {
+          return true;
+        }
+        return false;
+      });
+    }
 
     if (filter.ascending) {
       filtered.sort((a, b) => a[filter.column] - b[filter.column]);
@@ -137,13 +168,19 @@ class Home extends Component {
     let firstFilm = items.shift();
 
     let list = items.map((item, i) => {
-      let viewDate = moment(item.viewed).format('DD MMM YYYY');
+      let filteredValue = item[this.state.filter.column];
+      if (this.state.filter.column === "viewed" || this.state.filter.column === "released") {
+        filteredValue = moment(filteredValue).format('DD MMM YYYY');
+      }
+      let title = item.title;
+      if (item.type === "tv-season") title += ` S${item.season}`;
+      if (item.type === "tv-episode") title += ` S${item.season}E${item.episode}`;
       return (
         <div key={i} className="list-item flex" onClick={() => this.openFilmModal(item)}>
           <h1>{i+2}</h1>
           <div className="list-details flex jc-sb">
-            <h2>{item.title}</h2>
-            <h3>{viewDate}</h3>
+            <h2>{title}</h2>
+            <h3>{filteredValue}</h3>
           </div>
         </div>
       )
