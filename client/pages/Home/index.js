@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Filter from '../../components/Filter';
 import Film from '../../components/Film';
+import Menu from '../../components/Menu';
 import { getAsset } from '../../modules';
 import moment from 'moment';
 import axios from 'axios';
@@ -21,12 +22,14 @@ class Home extends Component {
         titles: []
       },
       filterActive: false,
+      menuActive: false,
       filmModal: false,
       modalFilm: null
     }
     this.setFilter = this.setFilter.bind(this);
     this.filterArray = this.filterArray.bind(this);
     this.toggleFilter = this.toggleFilter.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
     this.toggleDirection = this.toggleDirection.bind(this);
     this.updateSelect = this.updateSelect.bind(this);
     this.compileValues = this.compileValues.bind(this);
@@ -41,9 +44,13 @@ class Home extends Component {
       if (e.target.id === "filter-overlay") {
         this.setState({filterActive: false});
       }
+      if (e.target.id === "menu-overlay") {
+        this.setState({menuActive: false});
+      }
     });
     axios.get('/api/all')
     .then((result) => {
+      if (!result.data.length) result.data.push({});
       this.setState({list: result.data});
     })
   }
@@ -77,6 +84,10 @@ class Home extends Component {
 
   toggleFilter() {
     this.setState({filterActive: !this.state.filterActive});
+  }
+
+  toggleMenu() {
+    this.setState({menuActive: !this.state.menuActive});
   }
 
   toggleDirection() {
@@ -196,6 +207,7 @@ class Home extends Component {
           <Filter setFilter={this.setFilter} filter={this.state.filter} 
             active={this.state.filterActive} toggleFilter={this.toggleFilter}
             toggleDirection={this.toggleDirection} updateSelect={this.updateSelect} />
+          <Menu active={this.state.menuActive} toggleMenu={this.toggleMenu} />
           <Film film={firstFilm} />
         </div>
         <div className="list-wrapper">

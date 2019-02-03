@@ -1,0 +1,56 @@
+@import "../../vars.scss";
+
+#Best {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  .film-wrapper {
+    position: relative;
+    height: 100%;
+    padding-top: 100px;
+    max-width: calc(100% - 200px);
+    margin: auto;
+  }
+  .list-wrapper {
+    position: relative;
+    max-width: calc(100% - 200px);
+    margin: auto;
+    font-size: 20px;
+    margin-bottom: 50px;
+    .list-item {
+      margin-bottom: 10px;
+    }
+    h1 {
+      color: $gold;
+    }
+    h2 {
+      color: $green;
+    }
+    h3 {
+      color: $tomato;
+    }
+    .list-details {
+      width: 100%;
+      margin-left: 20px;
+    }
+  }
+  .film-modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: $dark-gray;
+    .modal-wrapper {
+      padding-top: 100px;
+      max-width: calc(100% - 200px);
+      height: 100%;
+      margin: auto;
+      position: relative;
+      .close-x {
+        width: 30px;
+        float: right;
+      }
+    }
+  }
+}
