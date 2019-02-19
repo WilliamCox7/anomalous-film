@@ -48,7 +48,7 @@ class Home extends Component {
         this.setState({menuActive: false});
       }
     });
-    axios.get('/api/all')
+    axios.get('/api/review')
     .then((result) => {
       if (!result.data.length) result.data.push({});
       this.setState({list: result.data});

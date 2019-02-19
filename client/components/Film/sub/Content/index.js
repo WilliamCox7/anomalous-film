@@ -8,7 +8,6 @@ class Content extends Component {
 
   render() {
 
-    let averageRating = (Number(this.props.film.rating) + Number(this.props.film.imdb)) / 2;
     let releaseDate = this.props.film.released ? moment(this.props.film.released).format('DD MMM YYYY') : "";
     let viewDate = moment(this.props.film.viewed).format('DD MMM YYYY');
 
@@ -48,7 +47,7 @@ class Content extends Component {
         <pre>{this.props.film.tagline}</pre>
         <div className="flex jc-sb ai-c">
           <Graph film={this.props.film} />
-          <h3>{averageRating.toFixed(1)}</h3>
+          <h3>{Number(this.props.film.rating).toFixed(1)}</h3>
         </div>
         <div className="context flex jc-sb">
           <h4>{viewDate}</h4>

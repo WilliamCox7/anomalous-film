@@ -1,10 +1,10 @@
 const mongoClient = require('mongodb').MongoClient;
 const mongoURI = require('./get-mongo-uri')();
 
-module.exports = () => new Promise((resolve, reject) => {
+module.exports = (list) => new Promise((resolve, reject) => {
   mongoClient.connect(mongoURI, (err, db) => {
     if (err) reject(err);
-    db.collection('list').find({}, (err, result) => {
+    db.collection(list).find({}, (err, result) => {
       if (err) reject(err);
       result.toArray((err, result) => {
         result = result.map((r) => {

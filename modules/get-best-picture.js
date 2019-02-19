@@ -4,8 +4,8 @@ const mongoURI = require('./get-mongo-uri')();
 module.exports = (year) => new Promise((resolve, reject) => {
   mongoClient.connect(mongoURI, (err, db) => {
     if (err) reject(err);
-    db.collection('list').find({
-      best: year
+    db.collection('review').find({
+      best: Number(year)
     }, (err, result) => {
       if (err) reject(err);
       result = result.sort({viewed: -1});
