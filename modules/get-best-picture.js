@@ -8,7 +8,7 @@ module.exports = (year) => new Promise((resolve, reject) => {
       best: Number(year)
     }, (err, result) => {
       if (err) reject(err);
-      result = result.sort({viewed: -1});
+      result = result.sort({rating: -1});
       result.toArray((err, result) => {
         if (err) reject(err);
         resolve(result);
