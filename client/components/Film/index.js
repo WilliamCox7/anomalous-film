@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { getAsset } from '../../modules';
-import Hexagon from './sub/Hexagon';
+import Poster from './sub/Poster';
 import Content from './sub/Content';
 import './style.scss';
 
@@ -9,8 +8,7 @@ class Film extends Component {
   render() {
     return (
       <div className="Film">
-        <Hexagon film={this.props.film} />
-        <Hexagon film={this.props.film} reflection />
+        <Poster film={this.props.film} />
         <Content film={this.props.film} />
       </div>
     );
